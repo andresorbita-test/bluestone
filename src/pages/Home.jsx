@@ -123,9 +123,10 @@ const Home = () => {
             if (!processRef.current) return;
             const rect = processRef.current.getBoundingClientRect();
             const windowH = window.innerHeight;
-            // Start when section is 65% into viewport, complete when top reaches 15%
+            // Start when section enters bottom of viewport, complete when section leaves top
+            // This creates a longer animation window visible during scroll
             const progress = Math.max(0, Math.min(1,
-                (windowH * 0.65 - rect.top) / (windowH * 0.5)
+                (windowH - rect.top) / (windowH + rect.height)
             ));
             setLineProgress(progress * 100);
         };
