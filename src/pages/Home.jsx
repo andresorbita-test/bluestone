@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MeshGradient } from '@paper-design/shaders-react';
 import { motion } from 'framer-motion';
 import CircularTestimonials from '../components/ui/CircularTestimonials';
+import MobileCarousel from '../components/ui/MobileCarousel';
 
 const TESTIMONIALS = [
     {
@@ -38,21 +39,69 @@ const TESTIMONIALS = [
     },
 ];
 
+const HERO_IMAGES = [
+    {
+        src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCM6wZHx3fOFxrRl7VGO-kgv-nikLyBRm3l-AZuvdJng6TVWLb1SU9l5WA9a25jj0-P7luFy0dB342dGh1mk5-BXBwxprSQDixSUwkha_6xGgMJ50sTsflnWhn4WLRpkAbmHx65E1pZHqOjbWOoviEsTJwsaf_2vJRnY73ajLXx9Ff31iu4LjRG1ZTlT_A-Vcl2KhVmPIYT6COFWWswVeNKha-2qTvFXxyPHKM2PiZCCMgs3jtjdq8-s_l7LXXHPoTy_1kqDU5RoPvu',
+        alt: 'Anillo de lapislázuli con plata fina',
+        ref: 'REF: AN-2024',
+    },
+    {
+        src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6R1xyk0qwQe0oWKs23hQ8VEBuvBMxWW_L1-L0wue6nTd7Z5zPSdZfrQJnUitl7EtCuRUF9pDgn7BC7p2vJ42mj1RexDtDk1irAU-p0qwDUYV0qj_sNrogLMgwrLf2BJLS0ZPcGDgir5cMshluWkiumtFLX9m5l1aVbfdgIWIEaZabHGk0Q4-v5zASYCaw1G4AEAFkUAwTYTtvVK98yBPrWVwyeCAOzEr8MY-nFOv75Qu6Fevzjsn_Ps4EwdV1-dUBRG_ukREN4JiG',
+        alt: 'Collar de cuentas de lapislázuli azul profundo',
+        ref: 'REF: CL-8812',
+    },
+    {
+        src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDBFRWaLj18zktmQjxaL9_lhCXetdis6bLt2ybzLi035yl-Fe-1V-Ea2Q6P8TqDvPMZF2c2SfzrLpc7XdzWG15x_DWVj3KpWtpkoOfygXdi_jZzTUuLVa-q0TfOJmv9-lQHk6HtQ2R5CA_vz1nUMP_ZqBZy5hEDsIGk7lEsDckQw4F6WqlM8iK3ZqrVl7wPYTrQLP5gOoXHC5ByNxQwmfL6S18v56IhHCqV8F71Tpv2qaVL_uSxc7siwh7O27PNxfavv7RX26XdTMlW',
+        alt: 'Escultura artesanal tallada en piedra lapislázuli',
+        ref: 'REF: AR-5540',
+    },
+];
+
 const Home = () => {
     const { t } = useTranslation();
+
+    // --- Social proof counter animation ---
+    const statsRef = useRef(null);
+    const [count5000, setCount5000] = useState(0);
+    const [count49, setCount49] = useState(0.0);
+    const [count100, setCount100] = useState(0);
+
+    useEffect(() => {
+        const el = statsRef.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(([entry]) => {
+            if (!entry.isIntersecting) return;
+            observer.disconnect();
+            const animate = (setter, target, duration, decimals = 0) => {
+                const start = performance.now();
+                const tick = (now) => {
+                    const p = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - p, 3);
+                    setter(parseFloat((eased * target).toFixed(decimals)));
+                    if (p < 1) requestAnimationFrame(tick);
+                };
+                requestAnimationFrame(tick);
+            };
+            animate(setCount5000, 5000, 1600);
+            animate(setCount49, 4.9, 1200, 1);
+            animate(setCount100, 100, 1000);
+        }, { threshold: 0.4 });
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
 
     // --- Image comparison slider ---
     const [sliderPos, setSliderPos] = useState(50);
     const [isDragging, setIsDragging] = useState(false);
     const compareRef = useRef(null);
 
-    const updateSlider = (clientX) => {
+    const updateSlider = useCallback((clientX) => {
         if (!compareRef.current) return;
         const rect = compareRef.current.getBoundingClientRect();
         const x = clientX - rect.left;
         const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
         setSliderPos(pct);
-    };
+    }, []);
 
     const handleMouseDown = (e) => {
         setIsDragging(true);
@@ -84,6 +133,23 @@ const Home = () => {
         onScroll();
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
+
+    // Non-passive touch handlers for comparison slider (prevents page scroll while dragging)
+    useEffect(() => {
+        const el = compareRef.current;
+        if (!el) return;
+        const onMove = (e) => { e.preventDefault(); updateSlider(e.touches[0].clientX); };
+        const onStart = (e) => { e.preventDefault(); setIsDragging(true); updateSlider(e.touches[0].clientX); };
+        const onEnd = () => setIsDragging(false);
+        el.addEventListener('touchstart', onStart, { passive: false });
+        el.addEventListener('touchmove', onMove, { passive: false });
+        el.addEventListener('touchend', onEnd);
+        return () => {
+            el.removeEventListener('touchstart', onStart);
+            el.removeEventListener('touchmove', onMove);
+            el.removeEventListener('touchend', onEnd);
+        };
+    }, [updateSlider]);
 
     const steps = [
         { icon: 'manufacturing', titleKey: 'proc_1_title', descKey: 'proc_1_desc' },
@@ -147,8 +213,9 @@ const Home = () => {
                     </motion.p>
 
                     {/* Hero Grid */}
+                    {/* Desktop hero grid */}
                     <motion.div
-                        className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
+                        className="hidden md:grid grid-cols-3 gap-8 mb-12"
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
@@ -159,20 +226,38 @@ const Home = () => {
                                 <span className="text-white font-mono text-sm tracking-wider">REF: AN-2024</span>
                             </div>
                         </div>
-
                         <div className="group relative aspect-[4/5] rounded-[24px] overflow-hidden shadow-2xl translate-y-8 transition-transform duration-500 hover:translate-y-4">
                             <img className="w-full h-full object-cover" alt="Collar de cuentas de lapislázuli azul profundo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6R1xyk0qwQe0oWKs23hQ8VEBuvBMxWW_L1-L0wue6nTd7Z5zPSdZfrQJnUitl7EtCuRUF9pDgn7BC7p2vJ42mj1RexDtDk1irAU-p0qwDUYV0qj_sNrogLMgwrLf2BJLS0ZPcGDgir5cMshluWkiumtFLX9m5l1aVbfdgIWIEaZabHGk0Q4-v5zASYCaw1G4AEAFkUAwTYTtvVK98yBPrWVwyeCAOzEr8MY-nFOv75Qu6Fevzjsn_Ps4EwdV1-dUBRG_ukREN4JiG" />
                             <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-8">
                                 <span className="text-white font-mono text-sm tracking-wider">REF: CL-8812</span>
                             </div>
                         </div>
-
                         <div className="group relative aspect-[4/5] rounded-[24px] overflow-hidden shadow-2xl transition-transform duration-500 hover:-translate-y-4">
                             <img className="w-full h-full object-cover" alt="Escultura artesanal tallada en piedra lapislázuli" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBFRWaLj18zktmQjxaL9_lhCXetdis6bLt2ybzLi035yl-Fe-1V-Ea2Q6P8TqDvPMZF2c2SfzrLpc7XdzWG15x_DWVj3KpWtpkoOfygXdi_jZzTUuLVa-q0TfOJmv9-lQHk6HtQ2R5CA_vz1nUMP_ZqBZy5hEDsIGk7lEsDckQw4F6WqlM8iK3ZqrVl7wPYTrQLP5gOoXHC5ByNxQwmfL6S18v56IhHCqV8F71Tpv2qaVL_uSxc7siwh7O27PNxfavv7RX26XdTMlW" />
                             <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-8">
                                 <span className="text-white font-mono text-sm tracking-wider">REF: AR-5540</span>
                             </div>
                         </div>
+                    </motion.div>
+
+                    {/* Mobile hero carousel — coverflow 3D */}
+                    <motion.div
+                        className="md:hidden mb-12"
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                    >
+                        <MobileCarousel
+                            containerHeight={280}
+                            items={HERO_IMAGES.map(img => (
+                                <div className="w-44 h-[220px] rounded-[20px] overflow-hidden shadow-2xl relative">
+                                    <img className="w-full h-full object-cover" alt={img.alt} src={img.src} />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-4">
+                                        <span className="text-white font-mono text-xs tracking-wider">{img.ref}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        />
                     </motion.div>
 
                     <motion.div
@@ -207,18 +292,18 @@ const Home = () => {
             </header>
 
             {/* Social Proof */}
-            <section className="bg-surface-container-low py-20 px-6">
+            <section ref={statsRef} className="bg-surface-container-low py-20 px-6">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
                     <div className="flex flex-col">
-                        <span className="text-5xl font-mono font-bold text-secondary">+5000</span>
+                        <span className="text-5xl font-mono font-bold text-secondary">+{count5000.toLocaleString()}</span>
                         <span className="text-sm font-label uppercase tracking-widest text-on-surface-variant">{t('sp_clients')}</span>
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-5xl font-mono font-bold text-secondary">4.9 ★</span>
+                        <span className="text-5xl font-mono font-bold text-secondary">{count49.toFixed(1)} ★</span>
                         <span className="text-sm font-label uppercase tracking-widest text-on-surface-variant">{t('sp_reviews')}</span>
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-5xl font-mono font-bold text-secondary">100%</span>
+                        <span className="text-5xl font-mono font-bold text-secondary">{count100}%</span>
                         <span className="text-sm font-label uppercase tracking-widest text-on-surface-variant">{t('sp_natural')}</span>
                     </div>
                 </div>
@@ -245,9 +330,6 @@ const Home = () => {
                                 onMouseMove={handleMouseMove}
                                 onMouseUp={handleMouseUp}
                                 onMouseLeave={handleMouseUp}
-                                onTouchStart={(e) => updateSlider(e.touches[0].clientX)}
-                                onTouchMove={handleTouchMove}
-                                onTouchEnd={handleMouseUp}
                             >
                                 <img className="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="Piedra de lapislázuli en bruto recién extraída" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNKoFcEgHL7tJp2bz8_CDkydWf2Z9WbFqKLvSCS--lPi7OesxCnn68Ack3topQQAFIC10K2k6Du9m96poqyg8hvLLN9Tbqzzav11fhpL3Iy9_F3lCQVbLBsr1vbo4jfutaE9pmLhyWFN9p3idNJX_Chw-9qHeaiJGCWCRwDCr4q84GGlKRdwbcXazjuzuTAeGv0xcjxdWpwbbcp7WJjoc9qFe1dfIlN_gSPbx4ytjncvyYuYMkuZ69k8OHmBncPmj4Rdbl4wdsE7lg" />
                                 <img className="absolute inset-0 w-full h-full object-cover pointer-events-none z-10" style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }} alt="Joya terminada de lapislázuli pulido" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkGKhk_2cOWEN2JuYKgBWpZb-vNvT1EEFutUw6PvHEmlD9udIYyknSq4E2KYGHi10XmpZmag7G8nGMGvW9BpA7arZyVLl-EByKXvtIVmJno_53Gm0d0ev5y6K6cJeaiyMILAgNp0jqhjoVBRVCndpE-PjDf8zNZyL0CEe7U6t1S0kBogEYDkh8JLXxTY6by5shmLPYr3Uj0t68VSbBPLUTHpObEyWMj7TWGgsAcYhIQsGIfEQhe0ZNTzgpmohiVBsVorDk7qoGQ3QS" />
@@ -331,14 +413,20 @@ const Home = () => {
                         {t('proc_title_1')}<span className="text-secondary italic">{t('proc_title_2')}</span>
                     </h2>
 
-                    <div className="relative flex flex-col md:flex-row justify-between gap-12 md:gap-4">
-                        {/* Background line (gray) */}
+                    <div className="relative flex flex-col items-center md:flex-row md:items-start justify-between gap-8 md:gap-4">
+                        {/* Desktop horizontal line (bg) */}
                         <div className="absolute top-8 left-8 right-8 h-px bg-outline-variant/30 hidden md:block" />
-
-                        {/* Animated progress line */}
+                        {/* Desktop animated progress line */}
                         <div
                             className="absolute top-8 left-8 h-px bg-secondary hidden md:block transition-all duration-300 ease-out"
                             style={{ width: `calc(${lineProgress}% * 0.84)` }}
+                        />
+                        {/* Mobile vertical line (bg) */}
+                        <div className="absolute top-8 left-1/2 -translate-x-1/2 w-0.5 bg-outline-variant/30 md:hidden" style={{ height: 'calc(100% - 32px)' }} />
+                        {/* Mobile animated vertical line */}
+                        <div
+                            className="absolute top-8 left-1/2 -translate-x-1/2 w-0.5 bg-secondary md:hidden transition-all duration-300 ease-out"
+                            style={{ height: `calc((100% - 32px) * ${lineProgress / 100})` }}
                         />
 
                         {steps.map((step, i) => {
@@ -347,7 +435,7 @@ const Home = () => {
                             return (
                                 <div
                                     key={step.titleKey}
-                                    className="relative z-10 flex flex-col items-center text-center max-w-[250px] transition-all duration-500"
+                                    className="relative z-10 flex flex-col items-center text-center w-full max-w-[250px] transition-all duration-500"
                                 >
                                     <div
                                         className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg mb-6 border transition-all duration-500 ${
@@ -386,7 +474,7 @@ const Home = () => {
                 <div className="max-w-7xl mx-auto">
                     <h2 className="text-4xl font-bold mb-16 text-center font-headline">{t('prod_title_1')}<span className="text-secondary italic">{t('prod_title_2')}</span></h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-end">
+                    <div className="hidden md:grid grid-cols-3 gap-10 items-end">
                         {/* Classic */}
                         <div className="bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/10 transition-all hover:scale-[1.02]">
                             <div className="aspect-[4/5] bg-surface-container rounded-2xl mb-8 overflow-hidden">
@@ -426,6 +514,64 @@ const Home = () => {
                                 <button className="bg-surface-container text-primary px-6 py-3 rounded-full font-bold hover:bg-secondary hover:text-white transition-all">{t('prod_detail')}</button>
                             </div>
                         </div>
+                    </div>
+
+                    {/* Mobile products carousel — coverflow 3D */}
+                    <div className="md:hidden">
+                        <MobileCarousel
+                            containerHeight={370}
+                            items={[
+                                /* Classic */
+                                <div className="w-52 h-[340px] rounded-[2rem] overflow-hidden bg-surface-container-lowest border border-outline-variant/10 shadow-xl flex flex-col">
+                                    <div className="h-[55%] overflow-hidden bg-surface-container">
+                                        <img className="w-full h-full object-cover" alt="Anillo clásico de lapislázuli" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp-3WXCOppVLR-W_zl7YZ8xteTQf-QU6_fzOVed4X6VG9p0YVA8kLHWimM4BdgXK-ZjoER9Rzk4eIXaUhIwNjBs0uEBruZL4Butyqi2juDibIgUWODZEzyKwvffhL73WukEuCM2lSkAHPAjZEW0xk0mdbrqsrHg5k_X7OwiJWRPavMGFmr7BZhoW7V9IMF746vlbiq10jR426FfV-6cz8euqwOnZVU5IAnMC_LFir4ka8iZy1lSY5EUq8gKFYb4psPiHcEbmKw5hsJ" />
+                                    </div>
+                                    <div className="flex flex-col flex-1 justify-between p-4">
+                                        <div>
+                                            <h3 className="text-base font-bold font-headline text-primary">{t('prod_classic_title')}</h3>
+                                            <p className="text-on-surface-variant text-xs mt-1">{t('prod_classic_desc')}</p>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span className="font-mono font-bold text-primary">$125.000</span>
+                                            <button className="bg-surface-container text-primary px-4 py-1.5 rounded-full font-bold text-xs hover:bg-secondary hover:text-white transition-all">{t('prod_add')}</button>
+                                        </div>
+                                    </div>
+                                </div>,
+                                /* Premium */
+                                <div className="w-52 h-[340px] rounded-[2rem] bg-primary-container shadow-2xl flex flex-col relative">
+                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-secondary text-white text-[10px] font-label uppercase tracking-widest px-3 py-0.5 rounded-full whitespace-nowrap">{t('prod_best')}</div>
+                                    <div className="h-[55%] overflow-hidden bg-white/10 rounded-t-[2rem]">
+                                        <img className="w-full h-full object-cover" alt="Set premium" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhzLgQVmLLm2HDHZDpMspvwDILciiKBSBkYxSb5Sx_uohA7Oic1J2pfqT3fGqEXxw8bQHPfUZicF4SoO6AtpP8OrQaD8A45gdfw3EMr1XfX5fecbTKFK84pnIBu4X7rshtl6aUYr7LuOMuqrIBDeJH0KdYAPR8R-zqpNrPhxvVZVUydebiADZVyYh-3qyYuHEPIMIqc0zUvfYtwmfWeNXMUVufTyWgPX4uPcHYmVfU0YyhLXgufxg9uXdQdQT1Jfj3_ADeenCzVxlr" />
+                                    </div>
+                                    <div className="flex flex-col flex-1 justify-between p-4">
+                                        <div>
+                                            <h3 className="text-base font-bold font-headline text-white">{t('prod_premium_title')}</h3>
+                                            <p className="text-on-primary-container text-xs mt-1">{t('prod_premium_desc')}</p>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span className="font-mono font-bold text-white">$340.000</span>
+                                            <Link to="/producto/1" className="bg-secondary text-white px-4 py-1.5 rounded-full font-bold text-xs hover:bg-white hover:text-primary transition-all">{t('prod_buy')}</Link>
+                                        </div>
+                                    </div>
+                                </div>,
+                                /* Special */
+                                <div className="w-52 h-[340px] rounded-[2rem] overflow-hidden bg-surface-container-lowest border border-outline-variant/10 shadow-xl flex flex-col">
+                                    <div className="h-[55%] overflow-hidden bg-surface-container">
+                                        <img className="w-full h-full object-cover" alt="Escultura especial" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_TUhG24M4eX0yUiNv8prfq69alPvighDNwiJrkP5OliC6X55e_SDeo_lUulp5Gt5cnwCVSmT_Olt2HuStFXG_mt9RagLFIrZOg9NOIAcmShk3Z0JJ360qJsll7bgZCVZVhtRvpkyOuuD5DSsL9QSIa1bFwxJRVzfOTl8eptNbVOFgnZAw8CeoYnvlEu6emuBV-VfvSnIfH5v7JieBlpn26TRi2yExH8kFAh_0xicbOfyf3lxzHCB37kCrPzwMy6l1JtG0zH9iFaOw" />
+                                    </div>
+                                    <div className="flex flex-col flex-1 justify-between p-4">
+                                        <div>
+                                            <h3 className="text-base font-bold font-headline text-primary">{t('prod_special_title')}</h3>
+                                            <p className="text-on-surface-variant text-xs mt-1">{t('prod_special_desc')}</p>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span className="font-mono font-bold text-primary">$580.000</span>
+                                            <button className="bg-surface-container text-primary px-4 py-1.5 rounded-full font-bold text-xs hover:bg-secondary hover:text-white transition-all">{t('prod_detail')}</button>
+                                        </div>
+                                    </div>
+                                </div>,
+                            ]}
+                        />
                     </div>
                 </div>
             </section>

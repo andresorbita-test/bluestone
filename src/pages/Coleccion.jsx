@@ -50,12 +50,12 @@ const Coleccion = () => {
   ];
 
   return (
-    <div className="bg-surface pt-40 px-12 md:px-24 pb-40" ref={gridRef}>
+    <div className="bg-surface pt-32 px-4 md:px-24 pb-40" ref={gridRef}>
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-24 gap-6 md:gap-12">
           <div>
              <p className="label-md text-secondary mb-4 tracking-[0.2em] uppercase">{t('col_badge')}</p>
-             <h1 className="text-display-lg text-primary font-heading font-semibold text-6xl tracking-tight">
+             <h1 className="text-display-lg text-primary font-heading font-semibold text-4xl md:text-6xl tracking-tight">
                {t('col_title_1')} <br />
                <span className="italic font-light opacity-80">{t('col_title_2')}</span>
              </h1>
@@ -71,7 +71,7 @@ const Coleccion = () => {
         </div>
 
         {sections.map((section, sIdx) => (
-           <div key={section.titleKey} className="mb-32 last:mb-0">
+           <div key={section.titleKey} className="mb-16 md:mb-32 last:mb-0">
               <div className="mb-16 pb-6 border-b border-primary/5 flex flex-col md:flex-row justify-between items-center gap-8">
                  <div>
                     <h2 className="text-3xl font-heading font-semibold text-primary mb-2 flex items-center gap-4">
@@ -83,7 +83,7 @@ const Coleccion = () => {
                     {t('col_craft_link')} <ChevronRight size={10} />
                  </Link>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+              <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12">
                  {section.products.map((product) => (
                    <Link 
                      key={product.id} 

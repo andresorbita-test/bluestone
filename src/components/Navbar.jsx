@@ -107,7 +107,7 @@ const Navbar = () => {
         <div className="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50">
             {/* Main navbar pill — motion wrapper for glow effect */}
             <motion.nav
-                className="relative flex items-center justify-between px-4 py-2 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/30 shadow-lg overflow-hidden"
+                className="relative flex items-center justify-between px-4 py-2 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/30 shadow-lg"
                 initial="initial"
                 whileHover="active"
             >
@@ -143,11 +143,11 @@ const Navbar = () => {
                     <div className="relative">
                         <button
                             onClick={() => setLangOpen(!langOpen)}
-                            className="flex items-center gap-1 px-3 py-2 border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container rounded-xl transition-all"
+                            className="flex items-center gap-1.5 px-3 py-2 border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container rounded-xl transition-all"
                         >
-                            <span className="text-sm">{activeLang.flag}</span>
-                            <span className="font-label tracking-widest text-[10px] uppercase hidden sm:block">{activeLang.code}</span>
-                            <ChevronDown className="w-3 h-3" />
+                            <span className="leading-none">{activeLang.flag}</span>
+                            <span className="font-label tracking-widest text-[10px] uppercase leading-none hidden sm:block">{activeLang.code}</span>
+                            <ChevronDown className="w-3 h-3 flex-shrink-0" />
                         </button>
                         <AnimatePresence>
                             {langOpen && (
