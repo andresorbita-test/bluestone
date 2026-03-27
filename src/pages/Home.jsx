@@ -413,7 +413,7 @@ const Home = () => {
                         {t('proc_title_1')}<span className="text-secondary italic">{t('proc_title_2')}</span>
                     </h2>
 
-                    <div className="relative flex flex-col items-center md:flex-row md:items-start justify-between gap-8 md:gap-4">
+                    <div className="relative flex flex-col items-center md:flex-row md:items-start justify-between gap-0 md:gap-4">
                         {/* Desktop horizontal line (bg) */}
                         <div className="absolute top-8 left-8 right-8 h-px bg-outline-variant/30 hidden md:block" />
                         {/* Desktop animated progress line */}
@@ -421,48 +421,51 @@ const Home = () => {
                             className="absolute top-8 left-8 h-px bg-secondary hidden md:block transition-all duration-300 ease-out"
                             style={{ width: `calc(${lineProgress}% * 0.84)` }}
                         />
-                        {/* Mobile vertical line (bg) */}
-                        <div className="absolute top-8 left-1/2 -translate-x-1/2 w-0.5 bg-outline-variant/30 md:hidden" style={{ height: 'calc(100% - 32px)' }} />
-                        {/* Mobile animated vertical line */}
-                        <div
-                            className="absolute top-8 left-1/2 -translate-x-1/2 w-0.5 bg-secondary md:hidden transition-all duration-300 ease-out"
-                            style={{ height: `calc((100% - 32px) * ${lineProgress / 100})` }}
-                        />
 
                         {steps.map((step, i) => {
                             const isActive = i <= activeStep;
                             const isLast = i === steps.length - 1;
                             return (
-                                <div
-                                    key={step.titleKey}
-                                    className="relative z-10 flex flex-col items-center text-center w-full max-w-[250px] transition-all duration-500"
-                                >
+                                <React.Fragment key={step.titleKey}>
                                     <div
-                                        className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg mb-6 border transition-all duration-500 ${
-                                            isActive
-                                                ? isLast
-                                                    ? 'arctic-gradient border-transparent scale-110'
-                                                    : 'bg-secondary border-secondary scale-110'
-                                                : 'bg-white border-outline-variant/10'
-                                        }`}
+                                        className="relative z-10 flex flex-col items-center text-center w-full max-w-[250px] transition-all duration-500 pt-6 md:pt-0"
                                     >
-                                        <span
-                                            className={`material-symbols-outlined transition-colors duration-500 ${
-                                                isActive ? 'text-white' : 'text-secondary'
+                                        <div
+                                            className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg mb-6 border transition-all duration-500 ${
+                                                isActive
+                                                    ? isLast
+                                                        ? 'arctic-gradient border-transparent scale-110'
+                                                        : 'bg-secondary border-secondary scale-110'
+                                                    : 'bg-white border-outline-variant/10'
                                             }`}
                                         >
-                                            {step.icon}
-                                        </span>
+                                            <span
+                                                className={`material-symbols-outlined transition-colors duration-500 ${
+                                                    isActive ? 'text-white' : 'text-secondary'
+                                                }`}
+                                            >
+                                                {step.icon}
+                                            </span>
+                                        </div>
+                                        <h4
+                                            className={`font-bold mb-2 font-headline transition-colors duration-500 ${
+                                                isActive ? 'text-primary' : 'text-on-surface-variant'
+                                            }`}
+                                        >
+                                            {t(step.titleKey)}
+                                        </h4>
+                                        <p className="text-sm text-on-surface-variant leading-relaxed">{t(step.descKey)}</p>
                                     </div>
-                                    <h4
-                                        className={`font-bold mb-2 font-headline transition-colors duration-500 ${
-                                            isActive ? 'text-primary' : 'text-on-surface-variant'
-                                        }`}
-                                    >
-                                        {t(step.titleKey)}
-                                    </h4>
-                                    <p className="text-sm text-on-surface-variant leading-relaxed">{t(step.descKey)}</p>
-                                </div>
+                                    {/* Mobile connector between steps — appears BELOW each step's text */}
+                                    {!isLast && (
+                                        <div className="md:hidden w-0.5 h-8 bg-outline-variant/20 relative flex-shrink-0 my-1">
+                                            <div
+                                                className="absolute top-0 left-0 w-full bg-secondary transition-all duration-500"
+                                                style={{ height: isActive ? '100%' : '0%' }}
+                                            />
+                                        </div>
+                                    )}
+                                </React.Fragment>
                             );
                         })}
                     </div>

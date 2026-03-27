@@ -32,6 +32,7 @@ const CircularTestimonials = ({
 
     const imageContainerRef  = useRef(null);
     const autoplayIntervalRef = useRef(null);
+    const touchStartRef = useRef(null);
 
     const len = useMemo(() => testimonials.length, [testimonials]);
     const active = useMemo(() => testimonials[activeIndex], [activeIndex, testimonials]);
@@ -105,6 +106,14 @@ const CircularTestimonials = ({
                     ref={imageContainerRef}
                     className="relative w-full h-80 md:h-96"
                     style={{ perspective: '1000px' }}
+                    onTouchStart={(e) => { touchStartRef.current = e.touches[0].clientX; }}
+                    onTouchEnd={(e) => {
+                        if (touchStartRef.current === null) return;
+                        const dx = touchStartRef.current - e.changedTouches[0].clientX;
+                        if (dx > 40) handleNext();
+                        else if (dx < -40) handlePrev();
+                        touchStartRef.current = null;
+                    }}
                 >
                     {testimonials.map((t, i) => (
                         <img
