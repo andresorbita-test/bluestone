@@ -118,7 +118,7 @@ const About = () => {
                 <div className="max-w-5xl mx-auto arctic-gradient rounded-xl p-16 text-center relative overflow-hidden bg-noise">
                     <div className="relative z-10">
                         <h2 className="font-headline text-3xl md:text-5xl font-semibold text-white mb-8">{t('about_cta_title')}</h2>
-                        <Link className="inline-flex items-center gap-3 bg-white text-primary px-12 md:px-10 py-5 rounded-full font-label text-sm uppercase tracking-widest font-bold hover:scale-105 transition-transform duration-300 whitespace-nowrap" to="/coleccion">
+                        <Link className="inline-flex items-center gap-2 bg-white text-primary px-8 md:px-10 py-5 rounded-full font-label text-xs md:text-sm uppercase tracking-widest font-bold hover:scale-105 transition-transform duration-300 whitespace-nowrap" to="/coleccion">
                             {t('about_cta_btn')}
                             <span className="material-symbols-outlined">arrow_right_alt</span>
                         </Link>
