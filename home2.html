@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bluestone | Joyería de Lapislázuli Chileno</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Manrope:wght@500;700&amp;family=JetBrains+Mono&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface-container": "#e4effd",
+                "on-secondary-container": "#124786",
+                "outline-variant": "#c3c6ce",
+                "tertiary-fixed-dim": "#c2c7cc",
+                "on-primary-fixed-variant": "#304864",
+                "on-tertiary-container": "#8b9095",
+                "on-tertiary-fixed": "#171c20",
+                "inverse-primary": "#b0c9ea",
+                "on-surface": "#121d26",
+                "tertiary-container": "#24292d",
+                "tertiary-fixed": "#dee3e8",
+                "on-tertiary-fixed-variant": "#42474c",
+                "background": "#f7f9ff",
+                "primary-fixed": "#d1e4ff",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-fixed-variant": "#124685",
+                "on-secondary": "#ffffff",
+                "surface-bright": "#f7f9ff",
+                "surface-variant": "#d9e3f1",
+                "error-container": "#ffdad6",
+                "surface-tint": "#48607d",
+                "primary-container": "#0f2a44",
+                "on-secondary-fixed": "#001b3d",
+                "on-background": "#121d26",
+                "on-error": "#ffffff",
+                "secondary-fixed-dim": "#a9c7ff",
+                "primary": "#00152a",
+                "error": "#ba1a1a",
+                "secondary-fixed": "#d6e3ff",
+                "inverse-surface": "#27313c",
+                "surface-container-low": "#edf4ff",
+                "tertiary": "#0f1518",
+                "on-tertiary": "#ffffff",
+                "secondary-container": "#8eb7fd",
+                "on-primary": "#ffffff",
+                "on-primary-container": "#7992b1",
+                "primary-fixed-dim": "#b0c9ea",
+                "on-primary-fixed": "#001d36",
+                "surface-container-highest": "#d9e3f1",
+                "inverse-on-surface": "#e8f2ff",
+                "outline": "#74777e",
+                "on-surface-variant": "#43474d",
+                "surface-dim": "#d1dbe8",
+                "on-error-container": "#93000a",
+                "surface-container-high": "#dfe9f7",
+                "surface": "#f7f9ff",
+                "secondary": "#325e9e"
+              },
+              fontFamily: {
+                "headline": ["Inter"],
+                "body": ["Inter"],
+                "label": ["Manrope"],
+                "mono": ["JetBrains Mono"]
+              },
+              borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .bg-noise {
+            position: relative;
+        }
+        .bg-noise::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.05;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3BaseFilter id='filter'%3BfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23filter)'/%3E%3C/svg%3E");
+        }
+        .arctic-gradient {
+            background: linear-gradient(135deg, #325e9e 0%, #0f2a44 100%);
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="text-on-surface selection:bg-secondary-container">
+<!-- Navbar -->
+<nav class="fixed top-8 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 glass-nav rounded-xl px-8 py-4 flex items-center justify-between border border-white/20 shadow-lg">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-primary">Bluestone</span>
+<div class="hidden lg:flex items-center gap-6">
+<a class="text-sm font-label uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors" href="#">Inicio</a>
+<a class="text-sm font-label uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors" href="#">Joyas</a>
+<a class="text-sm font-label uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors" href="#">Artesanía</a>
+<a class="text-sm font-label uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors" href="#">Lapislázuli</a>
+<a class="text-sm font-label uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors" href="#">Sobre Nosotros</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-all">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="arctic-gradient text-white px-6 py-2.5 rounded-full font-semibold hover:scale-105 transition-transform">
+                Comprar
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="pt-48 pb-24 px-6 overflow-hidden bg-noise">
+<div class="max-w-7xl mx-auto text-center mb-16">
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight text-primary mb-6">
+                Joyas auténticas de <span class="text-secondary italic">lapislázuli chileno</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-2xl mx-auto mb-10 leading-relaxed">
+                Artesanía fina tallada a mano en las altas cumbres de los Andes, capturando el espíritu del azul eterno.
+            </p>
+<!-- Hero Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="group relative aspect-[4/5] rounded-[24px] overflow-hidden shadow-2xl transition-transform duration-500 hover:-translate-y-4">
+<img class="w-full h-full object-cover" data-alt="Anillo de lapislázuli con plata fina" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM6wZHx3fOFxrRl7VGO-kgv-nikLyBRm3l-AZuvdJng6TVWLb1SU9l5WA9a25jj0-P7luFy0dB342dGh1mk5-BXBwxprSQDixSUwkha_6xGgMJ50sTsflnWhn4WLRpkAbmHx65E1pZHqOjbWOoviEsTJwsaf_2vJRnY73ajLXx9Ff31iu4LjRG1ZTlT_A-Vcl2KhVmPIYT6COFWWswVeNKha-2qTvFXxyPHKM2PiZCCMgs3jtjdq8-s_l7LXXHPoTy_1kqDU5RoPvu"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-8">
+<span class="text-white font-mono text-sm tracking-wider">REF: AN-2024</span>
+</div>
+</div>
+<div class="group relative aspect-[4/5] rounded-[24px] overflow-hidden shadow-2xl translate-y-8 transition-transform duration-500 hover:translate-y-4">
+<img class="w-full h-full object-cover" data-alt="Collar de cuentas de lapislázuli azul profundo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6R1xyk0qwQe0oWKs23hQ8VEBuvBMxWW_L1-L0wue6nTd7Z5zPSdZfrQJnUitl7EtCuRUF9pDgn7BC7p2vJ42mj1RexDtDk1irAU-p0qwDUYV0qj_sNrogLMgwrLf2BJLS0ZPcGDgir5cMshluWkiumtFLX9m5l1aVbfdgIWIEaZabHGk0Q4-v5zASYCaw1G4AEAFkUAwTYTtvVK98yBPrWVwyeCAOzEr8MY-nFOv75Qu6Fevzjsn_Ps4EwdV1-dUBRG_ukREN4JiG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-8">
+<span class="text-white font-mono text-sm tracking-wider">REF: CL-8812</span>
+</div>
+</div>
+<div class="group relative aspect-[4/5] rounded-[24px] overflow-hidden shadow-2xl transition-transform duration-500 hover:-translate-y-4">
+<img class="w-full h-full object-cover" data-alt="Escultura artesanal tallada en piedra lapislázuli" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5TxF63omnxFcRub8MVHorz7mafGjgZAWO5EAToU8EkYVuw_CPJnIs4_5pLd0NkyBf9o3_3ACwGY3RD28a8VE9VKkG3izx6pZ0kYkbP7xmO6Lc28h9W2hyNVnEL2wrbb0U9zENGMB3QFZS82Cw2IF_9ZJzPbmsEt5zGI7Mq9RByA_fDslF0mAOCydBr3HJFnt-OZISmGtv77MnYY8hq-el3lRYQH4v1s0o6NxYpEcsJxpAlesNlm31C0LOSDahpj043zKYORVIB8Ek"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-8">
+<span class="text-white font-mono text-sm tracking-wider">REF: AR-5540</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap justify-center gap-4 mb-12">
+<span class="px-6 py-2 bg-surface-container-highest rounded-full text-sm font-label uppercase tracking-widest text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">verified</span> Lapislázuli natural
+                </span>
+<span class="px-6 py-2 bg-surface-container-highest rounded-full text-sm font-label uppercase tracking-widest text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">brush</span> Diseños exclusivos
+                </span>
+<span class="px-6 py-2 bg-surface-container-highest rounded-full text-sm font-label uppercase tracking-widest text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">featured_seasonal_and_gifts</span> Regalos únicos
+                </span>
+</div>
+<button class="arctic-gradient text-white px-10 py-5 rounded-full text-lg font-bold hover:scale-110 shadow-xl transition-all">
+                Comprar ahora
+            </button>
+</div>
+</header>
+<!-- Social Proof -->
+<section class="bg-surface-container-low py-20 px-6">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
+<div class="flex flex-col">
+<span class="text-5xl font-mono font-bold text-secondary">+5000</span>
+<span class="text-sm font-label uppercase tracking-widest text-on-surface-variant">clientes satisfechos</span>
+</div>
+<div class="flex flex-col">
+<span class="text-5xl font-mono font-bold text-secondary">4.9 ★</span>
+<span class="text-sm font-label uppercase tracking-widest text-on-surface-variant">reseñas certificadas</span>
+</div>
+<div class="flex flex-col">
+<span class="text-5xl font-mono font-bold text-secondary">100%</span>
+<span class="text-sm font-label uppercase tracking-widest text-on-surface-variant">natural y certificado</span>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-32 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- F5: Before/After -->
+<div class="lg:col-span-7 bg-surface-container-lowest border-outline-variant/10 border rounded-[32px] overflow-hidden p-8 flex flex-col justify-between min-h-[500px]">
+<div>
+<span class="text-xs font-label uppercase tracking-[0.2em] text-secondary mb-4 block">Transformación</span>
+<h3 class="text-3xl font-bold mb-6">De la roca bruta a la joya eterna</h3>
+</div>
+<div class="relative flex-grow rounded-2xl overflow-hidden group">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Piedra de lapislázuli en bruto recién extraída" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNKoFcEgHL7tJp2bz8_CDkydWf2Z9WbFqKLvSCS--lPi7OesxCnn68Ack3topQQAFIC10K2k6Du9m96poqyg8hvLLN9Tbqzzav11fhpL3Iy9_F3lCQVbLBsr1vbo4jfutaE9pmLhyWFN9p3idNJX_Chw-9qHeaiJGCWCRwDCr4q84GGlKRdwbcXazjuzuTAeGv0xcjxdWpwbbcp7WJjoc9qFe1dfIlN_gSPbx4ytjncvyYuYMkuZ69k8OHmBncPmj4Rdbl4wdsE7lg"/>
+<div class="absolute inset-0 w-1/2 overflow-hidden border-r-4 border-white z-10">
+<img class="absolute inset-0 w-[200%] h-full object-cover" data-alt="Joya terminada de lapislázuli pulido" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkGKhk_2cOWEN2JuYKgBWpZb-vNvT1EEFutUw6PvHEmlD9udIYyknSq4E2KYGHi10XmpZmag7G8nGMGvW9BpA7arZyVLl-EByKXvtIVmJno_53Gm0d0ev5y6K6cJeaiyMILAgNp0jqhjoVBRVCndpE-PjDf8zNZyL0CEe7U6t1S0kBogEYDkh8JLXxTY6by5shmLPYr3Uj0t68VSbBPLUTHpObEyWMj7TWGgsAcYhIQsGIfEQhe0ZNTzgpmohiVBsVorDk7qoGQ3QS"/>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-white p-3 rounded-full shadow-xl">
+<span class="material-symbols-outlined">unfold_more</span>
+</div>
+</div>
+</div>
+<!-- F10: Testimonials -->
+<div class="lg:col-span-5 bg-surface-container-lowest border-outline-variant/10 border rounded-[32px] p-10 flex flex-col justify-between">
+<div>
+<span class="text-xs font-label uppercase tracking-[0.2em] text-secondary mb-4 block">Experiencias</span>
+<h3 class="text-3xl font-bold mb-8">Lo que dicen nuestros coleccionistas</h3>
+</div>
+<div class="space-y-8">
+<div class="flex items-start gap-4 p-4 hover:bg-surface-container rounded-2xl transition-colors">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="Avatar de cliente Claudio Rengifo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdIOlC08xTupFE4Kdw5CuVq1IBsDTdkmV5UcuelurG4p4NY6vPkKOCeXpWm2GmrCBF08gkxNzyEl-pajiBxby1kERJonnuQaKuP92du2NwoiqUDGDQOo343c71LV55LYaDJtLDpczagItfhzeKPapjX9KhEsBjBOx45K4p9B9-uKMnxNbSPswmWrLLAQxiuybb4qM4azaBySWAh671rGiwDC1GxYsEpE7Tkh2MYRIOrnG3CV8OP9AQ4t7F6v6Xu86Ecz5tvuj-2yMf"/>
+<div>
+<p class="text-sm italic mb-2 text-on-surface-variant">"La calidad del azul es hipnotizante. Se nota que es piedra genuina."</p>
+<p class="font-bold text-primary">Claudio Rengifo</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 hover:bg-surface-container rounded-2xl transition-colors">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="Avatar de cliente Laura Ohara" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByJoPn-2rkZ78fBdCBJaT7ul9k49T2p6ETm7U_KYHNsRLIAJbaVvcG0EF8emcXX6qNfZ2JD1iJIC1QtSvwAlgf3OWWWZgF0ZHKCi_LicfYtDkMhUykH5lrdEL-nQt81p29G_nlkH3twCi4RijSZJOHTQm9L3KvCcY9_GnGlt8APyZZAFblnW7FzYJ4v4bMS9IxuCHZ7KzvXq93381Zhhc9uHfLFcWfv4F8xbBJebRnfuGNwWh8G3oq_F7dF34I6LH-ptKj9N4bCIB9"/>
+<div>
+<p class="text-sm italic mb-2 text-on-surface-variant">"Un regalo inolvidable. El empaque y la terminación son impecables."</p>
+<p class="font-bold text-primary">Laura Ohara</p>
+</div>
+</div>
+</div>
+</div>
+<!-- F3: Quick Buy Simulation -->
+<div class="lg:col-span-12 bg-primary-container text-white rounded-[32px] p-12 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden bg-noise">
+<div class="max-w-md z-10">
+<span class="text-xs font-label uppercase tracking-[0.2em] text-secondary-container mb-4 block">Agendar visita</span>
+<h3 class="text-4xl font-bold mb-6">Selección personalizada en showroom</h3>
+<p class="text-on-primary-container mb-8">¿Buscas algo específico? Reserva una sesión de curaduría privada para elegir tu piedra.</p>
+<button class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-full font-bold hover:bg-white transition-colors">Agendar ahora</button>
+</div>
+<div class="relative bg-white/10 rounded-3xl p-6 backdrop-blur-md border border-white/10 w-full max-w-sm">
+<div class="flex justify-between items-center mb-6">
+<span class="font-mono text-sm uppercase">Octubre 2024</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-xs">chevron_left</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center text-[10px] font-bold text-on-primary-container mb-4">
+<span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center">
+<div class="p-2 text-xs opacity-30">29</div><div class="p-2 text-xs opacity-30">30</div>
+<div class="p-2 text-xs bg-secondary-container text-on-secondary-container rounded-lg">1</div>
+<div class="p-2 text-xs hover:bg-white/20 rounded-lg">2</div><div class="p-2 text-xs hover:bg-white/20 rounded-lg">3</div>
+<div class="p-2 text-xs hover:bg-white/20 rounded-lg">4</div><div class="p-2 text-xs hover:bg-white/20 rounded-lg">5</div>
+</div>
+<div class="absolute -bottom-4 -right-4 bg-white text-primary p-3 rounded-xl shadow-2xl flex items-center gap-3 animate-bounce">
+<span class="material-symbols-outlined fill text-secondary">ads_click</span>
+<span class="text-xs font-bold">Reserva confirmada</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Process Section -->
+<section class="py-24 px-6 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-center text-4xl font-bold mb-20">El viaje del <span class="text-secondary italic">Oro Azul</span></h2>
+<div class="relative flex flex-col md:flex-row justify-between gap-12 md:gap-4">
+<div class="absolute top-1/2 left-0 w-full h-px bg-outline-variant hidden md:block"></div>
+<div class="relative z-10 flex flex-col items-center text-center max-w-[250px]">
+<div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg mb-6 border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary">manufacturing</span>
+</div>
+<h4 class="font-bold mb-2">Extracción Ética</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Mineral obtenido a 4,000 metros de altura en los Andes chilenos.</p>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center max-w-[250px]">
+<div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg mb-6 border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary">diamond</span>
+</div>
+<h4 class="font-bold mb-2">Selección</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Curamos solo el 5% de las piedras por su pureza y tono lazulita.</p>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center max-w-[250px]">
+<div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg mb-6 border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary">precision_manufacturing</span>
+</div>
+<h4 class="font-bold mb-2">Tallado Manual</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Nuestros maestros artesanos esculpen cada pieza con precisión milimétrica.</p>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center max-w-[250px]">
+<div class="w-16 h-16 arctic-gradient rounded-2xl flex items-center justify-center shadow-lg mb-6">
+<span class="material-symbols-outlined text-white">check_circle</span>
+</div>
+<h4 class="font-bold mb-2">Pieza Final</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Una joya única con certificado de autenticidad y origen.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Showcase -->
+<section class="py-32 px-6">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-4xl font-bold mb-16 text-center">Colección <span class="text-secondary italic">Exclusiva</span></h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-end">
+<!-- Classic -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/10 transition-all hover:scale-[1.02]">
+<div class="aspect-square bg-surface-container rounded-2xl mb-8 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Anillo clásico de lapislázuli talla cabujón" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp-3WXCOppVLR-W_zl7YZ8xteTQf-QU6_fzOVed4X6VG9p0YVA8kLHWimM4BdgXK-ZjoER9Rzk4eIXaUhIwNjBs0uEBruZL4Butyqi2juDibIgUWODZEzyKwvffhL73WukEuCM2lSkAHPAjZEW0xk0mdbrqsrHg5k_X7OwiJWRPavMGFmr7BZhoW7V9IMF746vlbiq10jR426FfV-6cz8euqwOnZVU5IAnMC_LFir4ka8iZy1lSY5EUq8gKFYb4psPiHcEbmKw5hsJ"/>
+</div>
+<h3 class="text-2xl font-bold mb-2">Edición Clásica</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Elegancia pura para el día a día.</p>
+<div class="flex justify-between items-center">
+<span class="font-mono text-xl font-bold">$125.000</span>
+<button class="bg-surface-container text-primary px-6 py-3 rounded-full font-bold hover:bg-secondary hover:text-white transition-all">Añadir</button>
+</div>
+</div>
+<!-- Premium - Highlighted -->
+<div class="bg-primary-container text-white p-10 rounded-[2.5rem] shadow-2xl scale-105 relative z-10 bg-noise">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white text-[10px] font-label uppercase tracking-widest px-4 py-1 rounded-full">Más vendido</div>
+<div class="aspect-square bg-white/10 rounded-3xl mb-8 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Set premium de collar y aros de lapislázuli de alta calidad" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhzLgQVmLLm2HDHZDpMspvwDILciiKBSBkYxSb5Sx_uohA7Oic1J2pfqT3fGqEXxw8bQHPfUZicF4SoO6AtpP8OrQaD8A45gdfw3EMr1XfX5fecbTKFK84pnIBu4X7rshtl6aUYr7LuOMuqrIBDeJH0KdYAPR8R-zqpNrPhxvVZVUydebiADZVyYh-3qyYuHEPIMIqc0zUvfYtwmfWeNXMUVufTyWgPX4uPcHYmVfU0YyhLXgufxg9uXdQdQT1Jfj3_ADeenCzVxlr"/>
+</div>
+<h3 class="text-3xl font-bold mb-2">Edición Premium</h3>
+<p class="text-on-primary-container mb-6 text-sm">Selección de piedras AAA en montura de plata sólida.</p>
+<div class="flex justify-between items-center">
+<span class="font-mono text-2xl font-bold">$340.000</span>
+<button class="bg-secondary text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-primary transition-all">Comprar ahora</button>
+</div>
+</div>
+<!-- Special Edition -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/10 transition-all hover:scale-[1.02]">
+<div class="aspect-square bg-surface-container rounded-2xl mb-8 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Escultura de edición especial en piedra lapislázuli con inclusiones de pirita" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_TUhG24M4eX0yUiNv8prfq69alPvighDNwiJrkP5OliC6X55e_SDeo_lUulp5Gt5cnwCVSmT_Olt2HuStFXG_mt9RagLFIrZOg9NOIAcmShk3Z0JJ360qJsll7bgZCVZVhtRvpkyOuuD5DSsL9QSIa1bFwxJRVzfOTl8eptNbVOFgnZAw8CeoYnvlEu6emuBV-VfvSnIfH5v7JieBlpn26TRi2yExH8kFAh_0xicbOfyf3lxzHCB37kCrPzwMy6l1JtG0zH9iFaOw"/>
+</div>
+<h3 class="text-2xl font-bold mb-2">Edición Especial</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Piezas de autor limitadas a 10 unidades.</p>
+<div class="flex justify-between items-center">
+<span class="font-mono text-xl font-bold">$580.000</span>
+<button class="bg-surface-container text-primary px-6 py-3 rounded-full font-bold hover:bg-secondary hover:text-white transition-all">Ver detalle</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ -->
+<section class="py-24 px-6 bg-surface-container-low">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-4xl font-bold mb-12 text-center italic">Preguntas Frecuentes</h2>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden">
+<button class="w-full px-8 py-6 text-left flex justify-between items-center group">
+<span class="font-bold">¿El lapislázuli es 100% natural?</span>
+<span class="material-symbols-outlined text-secondary transition-transform group-focus:rotate-180">expand_more</span>
+</button>
+<div class="px-8 pb-6 text-sm text-on-surface-variant leading-relaxed">
+                        Sí, todas nuestras piedras provienen de la mina Flor de los Andes en Ovalle, Chile. No utilizamos piedras sintéticas ni teñidas. Cada pieza incluye un certificado de autenticidad.
+                    </div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden opacity-70">
+<button class="w-full px-8 py-6 text-left flex justify-between items-center group">
+<span class="font-bold">¿Realizan envíos internacionales?</span>
+<span class="material-symbols-outlined text-secondary">expand_more</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden opacity-70">
+<button class="w-full px-8 py-6 text-left flex justify-between items-center group">
+<span class="font-bold">¿La joyería es artesanal?</span>
+<span class="material-symbols-outlined text-secondary">expand_more</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden opacity-70">
+<button class="w-full px-8 py-6 text-left flex justify-between items-center group">
+<span class="font-bold">¿Qué métodos de pago aceptan?</span>
+<span class="material-symbols-outlined text-secondary">expand_more</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden opacity-70">
+<button class="w-full px-8 py-6 text-left flex justify-between items-center group">
+<span class="font-bold">¿Viene en caja de regalo?</span>
+<span class="material-symbols-outlined text-secondary">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary-container text-white py-24 px-6 bg-noise">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+<div>
+<span class="text-3xl font-bold tracking-tighter mb-6 block">Bluestone</span>
+<p class="text-on-primary-container text-sm leading-relaxed mb-6">Elevando el patrimonio mineral de Chile a través del diseño contemporáneo y la maestría artesanal.</p>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-sm">share</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-sm">mail</span>
+</div>
+</div>
+</div>
+<div>
+<h5 class="font-label uppercase tracking-widest text-xs text-secondary-container mb-8">Brand Info</h5>
+<ul class="space-y-4 text-sm text-on-primary-container">
+<li><a class="hover:text-white transition-colors" href="#">Nuestra Historia</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Artesanos</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Compromiso Ético</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label uppercase tracking-widest text-xs text-secondary-container mb-8">Products</h5>
+<ul class="space-y-4 text-sm text-on-primary-container">
+<li><a class="hover:text-white transition-colors" href="#">Anillos</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Collares</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Esculturas</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Colecciones</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label uppercase tracking-widest text-xs text-secondary-container mb-8">Company</h5>
+<ul class="space-y-4 text-sm text-on-primary-container">
+<li><a class="hover:text-white transition-colors" href="#">Soporte</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Envíos</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Términos</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Privacidad</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+<span class="text-xs font-mono text-on-primary-container">© Bluestone. Active System Status: Online</span>
+<div class="flex gap-8 text-[10px] font-label uppercase tracking-widest text-on-primary-container">
+<a class="hover:text-white" href="#">Facebook</a>
+<a class="hover:text-white" href="#">Instagram</a>
+<a class="hover:text-white" href="#">LinkedIn</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

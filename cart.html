@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Manrope:wght@500&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#27313c",
+              "secondary-fixed": "#d6e3ff",
+              "primary": "#00152a",
+              "error": "#ba1a1a",
+              "secondary-fixed-dim": "#a9c7ff",
+              "on-error": "#ffffff",
+              "on-primary-container": "#7992b1",
+              "on-primary": "#ffffff",
+              "secondary-container": "#8eb7fd",
+              "tertiary": "#0f1518",
+              "on-tertiary": "#ffffff",
+              "surface-container-low": "#edf4ff",
+              "surface-dim": "#d1dbe8",
+              "on-error-container": "#93000a",
+              "on-surface-variant": "#43474d",
+              "outline": "#74777e",
+              "surface-container-highest": "#d9e3f1",
+              "inverse-on-surface": "#e8f2ff",
+              "primary-fixed-dim": "#b0c9ea",
+              "on-primary-fixed": "#001d36",
+              "secondary": "#325e9e",
+              "surface": "#f7f9ff",
+              "surface-container-high": "#dfe9f7",
+              "on-tertiary-container": "#8b9095",
+              "on-primary-fixed-variant": "#304864",
+              "tertiary-fixed-dim": "#c2c7cc",
+              "outline-variant": "#c3c6ce",
+              "on-secondary-container": "#124786",
+              "surface-container": "#e4effd",
+              "tertiary-container": "#24292d",
+              "on-surface": "#121d26",
+              "inverse-primary": "#b0c9ea",
+              "on-tertiary-fixed": "#171c20",
+              "on-secondary-fixed-variant": "#124685",
+              "on-secondary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#d1e4ff",
+              "background": "#f7f9ff",
+              "tertiary-fixed": "#dee3e8",
+              "on-tertiary-fixed-variant": "#42474c",
+              "on-background": "#121d26",
+              "on-secondary-fixed": "#001b3d",
+              "surface-tint": "#48607d",
+              "primary-container": "#0f2a44",
+              "surface-variant": "#d9e3f1",
+              "error-container": "#ffdad6",
+              "surface-bright": "#f7f9ff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Manrope"],
+              "mono": ["JetBrains Mono"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+        }
+        .arctic-gradient {
+            background: linear-gradient(135deg, #325e9e 0%, #0f2a44 100%);
+        }
+        .custom-noise {
+            position: relative;
+        }
+        .custom-noise::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.05;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary-fixed selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-8 left-1/2 -translate-x-1/2 w-[92%] z-50 glass-nav border border-outline-variant/15 rounded-xl px-8 py-4 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<span class="font-headline font-semibold text-2xl tracking-tight text-primary">Bluestone</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label text-xs uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors" href="#">Jewelry</a>
+<a class="font-label text-xs uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors" href="#">Collections</a>
+<a class="font-label text-xs uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors" href="#">Bespoke</a>
+<a class="font-label text-xs uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors" href="#">Heritage</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</nav>
+<main class="pt-40 pb-24 px-6 md:px-24 max-w-7xl mx-auto">
+<header class="mb-16">
+<span class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-4 block">Your Selection</span>
+<h1 class="font-headline text-5xl md:text-6xl font-semibold tracking-tight text-primary">Shopping Bag</h1>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Item List -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Product 1 -->
+<div class="flex flex-col md:flex-row gap-8 items-start pb-12 border-b border-outline-variant/15">
+<div class="w-full md:w-48 aspect-square bg-surface-container-highest rounded-xl overflow-hidden">
+<img alt="Premium Lapis Lazuli Bracelet" class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 hover:scale-105" data-alt="Deep blue lapis lazuli bracelet on a white surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN8U0BW6RbiVkbou3y6eJmWj3wuVGipJFMKLgmebj8E-dbJAHGxWfZr5O3qOR5IPxNjHEz4G3xzw5m3CIamnFJ7uhiNkb3xTk0-Is7Kp0_hzJxHYTEnm1aGcjESZry_K9siyuAJbAor48NPVIe-YI8wu6A8XVK0tBrUbxcoDHM1ZD2Yn9WrmQMFNgxUH0s6PtdgAAOeW4jd9OpMDjoMAXY4jLjWNtKxzR4h0q_cYamtdb62x8gqeHjy_i0gv069_CrME3EkQJIJqPa"/>
+</div>
+<div class="flex-1 flex flex-col justify-between self-stretch">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-2xl font-semibold text-primary mb-1">Pulsera de Lapislázuli Edición Premium</h3>
+<p class="font-label text-xs uppercase tracking-wider text-on-surface-variant">High Andes Collection • Grade AAA</p>
+</div>
+<button class="p-2 hover:bg-error-container hover:text-error rounded-full transition-all group">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+<div class="flex flex-wrap items-end justify-between mt-8 md:mt-0">
+<div class="flex items-center bg-surface-container rounded-full p-1 border border-outline-variant/10">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="w-12 text-center font-mono font-medium">1</span>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<div class="font-mono text-xl font-medium text-primary">$340.000</div>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="flex flex-col md:flex-row gap-8 items-start pb-12 border-b border-outline-variant/15">
+<div class="w-full md:w-48 aspect-square bg-surface-container-highest rounded-xl overflow-hidden">
+<img alt="Classic Lapis Lazuli Ring" class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 hover:scale-105" data-alt="Silver ring featuring a polished lapis lazuli stone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs8LUT7C9qv_07z5fDTkfpk83FdUny_wJj79k-RBwI84JHKYW0W_JF5p3WR0oY_RVBhg7Jmve-PGs_N4nO_l_8mq5XmS2dmEiuKAdzC1aK4xKfBugwkETxOa3tHyohl6L-jYtOQwsXAc4I1f0EEf-66OgFjcE-SwHGdCGcqIgv5vLjCB8NQrVGL60z_1JEWm1u3ASaXTIDOLSIyvlqULqzXm4YoT6AQsWSwrP5WQKyEmok9j1Hn5ujO66UZ1gwTJTLSuDid-XpEKzd"/>
+</div>
+<div class="flex-1 flex flex-col justify-between self-stretch">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-2xl font-semibold text-primary mb-1">Anillo Classic Lapislázuli</h3>
+<p class="font-label text-xs uppercase tracking-wider text-on-surface-variant">Timeless Essentials • Chilean Ore</p>
+</div>
+<button class="p-2 hover:bg-error-container hover:text-error rounded-full transition-all group">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+<div class="flex flex-wrap items-end justify-between mt-8 md:mt-0">
+<div class="flex items-center bg-surface-container rounded-full p-1 border border-outline-variant/10">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="w-12 text-center font-mono font-medium">1</span>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<div class="font-mono text-xl font-medium text-primary">$125.000</div>
+</div>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 group pt-4" href="#">
+<span class="material-symbols-outlined text-secondary group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">arrow_back</span>
+<span class="font-label text-xs uppercase tracking-widest text-secondary font-semibold">Continue Shopping</span>
+</a>
+</div>
+<!-- Summary Sidebar -->
+<div class="lg:col-span-4">
+<div class="bg-surface-container-low rounded-xl p-10 sticky top-40 custom-noise overflow-hidden">
+<h2 class="font-headline text-2xl font-semibold text-primary mb-8">Order Summary</h2>
+<div class="space-y-6 mb-10">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-body">Subtotal</span>
+<span class="font-mono">$465.000</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-body">Estimated Shipping</span>
+<span class="font-label text-[10px] uppercase font-bold tracking-widest text-secondary">Free</span>
+</div>
+<div class="pt-6 border-t border-outline-variant/30 flex justify-between items-center">
+<span class="font-headline font-semibold text-primary">Total</span>
+<span class="font-mono text-2xl font-semibold text-primary">$465.000</span>
+</div>
+</div>
+<div class="space-y-4">
+<button class="w-full arctic-gradient text-on-primary py-5 rounded-xl font-label text-xs uppercase tracking-[0.2em] font-bold hover:scale-[1.02] hover:-translate-y-1 transition-all shadow-xl shadow-primary/10">
+                            Proceed to Checkout
+                        </button>
+<div class="flex items-center justify-center gap-2 pt-4 opacity-40">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Secure SSL Checkout</span>
+</div>
+</div>
+<div class="mt-12 p-6 bg-surface-container rounded-lg border border-outline-variant/20">
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-3 font-bold">Sustainable Packaging</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">Each Bluestone piece arrives in a handcrafted, FSC-certified wooden box with a certificate of authenticity.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Extra Recommendations / Bento Grid style section -->
+<section class="mt-40">
+<div class="flex items-end justify-between mb-12">
+<div>
+<span class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-2 block">Complete the set</span>
+<h2 class="font-headline text-4xl font-semibold tracking-tight text-primary">Curated for You</h2>
+</div>
+<button class="hidden md:flex items-center gap-2 font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">
+                    View Entire Collection
+                    <span class="material-symbols-outlined text-sm" data-icon="trending_flat">trending_flat</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="md:col-span-2 bg-surface-container-high rounded-xl p-8 relative overflow-hidden group">
+<div class="relative z-10 h-full flex flex-col justify-between">
+<div>
+<h3 class="font-headline text-2xl font-semibold mb-2">Artisan Polishing Kit</h3>
+<p class="text-sm text-on-surface-variant max-w-xs">Maintain the deep celestial luster of your stones with our specialized care formula.</p>
+</div>
+<span class="font-mono text-lg mt-12">$24.000</span>
+</div>
+<img alt="Jewelry cleaning kit" class="absolute -right-12 bottom-0 w-64 h-64 object-contain opacity-40 group-hover:opacity-60 transition-opacity" data-alt="High-end jewelry care kit with organic oils" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhZoLL5-hpvziOxCogQp1Pa34YTqxM1Od1BWHHl_uexjkD7akEABCmDup8_R6iXeNWWGdbTScA-IBYODyofyIZVT-F2C_XrsqgQWjFEIIkg1yuREZZ22-11EGaEE08hvhedyvt_SE09MGSpPl1BuvKjFqtRs_maKxSd9UUmkR0_ykVPqzpdZVFncFYNhS2QY9mKa07xlKlzkEsUAUUa_OFHPKjaQwfrP-I63G7XMrmwj20mTXglXxqGtryV6Is16CCUpNLpmk7pwpB"/>
+</div>
+<div class="bg-surface-container rounded-xl p-8 flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div class="aspect-square bg-surface-container-highest rounded-lg mb-6 overflow-hidden">
+<img alt="Small Lapis Earrings" class="w-full h-full object-cover mix-blend-multiply" data-alt="Delicate lapis lazuli stud earrings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXw8-VY6b_9YWiopxkyaiumaeFvSOc0Pt8VtU0y6yLtVWsum8bg9AD9zaQ_oqG5iQgSfLPW4A4N8Bler2nw5n9tKEHqy1m1BshsipQe838L3hy0CZ5oH-BHiCcqQaR1x1Ehz3tZYF3hn-TNIS0cXawiRxyPDexW9G0Tn0dIOPgj0ogWRzPUub23GRURWJTDu4f2oT-SFesxPzZGBPj6fyG1G8fFFlfFMDuEAHoTB2Y-6sskrh7z8qOI6prDR0f52Gu4emLekVdJW2W"/>
+</div>
+<div>
+<h4 class="font-headline font-semibold mb-1">Celestial Studs</h4>
+<div class="flex justify-between items-center">
+<span class="font-mono text-sm">$85.000</span>
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-8 flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div class="aspect-square bg-surface-container-highest rounded-lg mb-6 overflow-hidden">
+<img alt="Silver Necklace" class="w-full h-full object-cover mix-blend-multiply" data-alt="Elegant silver chain with a blue stone pendant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC40LtJZpwvXQnZfXXLD7iUtQ074kof01fYVohB6wV1dTSA3K0OB6CSfbbKbGEWhxzlZxRlieGSkFDS-4upt8315dYLpghG6Yw1rKCIS6i7ypX1-OBvCNQs-PB9ZMsKwegmuj9R7d5KTkdIUbs7gxTmGEjfvyg4J6tB2OjLtxBP95CGEmYlUOKlL3EYEO6NZhCbBNQ-9I3C0N_mlBMSx1lxP-RaMa_U8zEGn-bcx0CMVEpJvUgJYzny9sTE81uJjcwr59eQHl9_BKp5"/>
+</div>
+<div>
+<h4 class="font-headline font-semibold mb-1">Andean Pendant</h4>
+<div class="flex justify-between items-center">
+<span class="font-mono text-sm">$110.000</span>
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary py-24 px-6 md:px-24 border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
+<div class="max-w-xs">
+<span class="font-headline font-semibold text-2xl tracking-tight mb-6 block">Bluestone</span>
+<p class="text-on-primary-container text-sm leading-relaxed mb-8">Authentic Chilean Lapis Lazuli, responsibly sourced from the highest peaks of the Andes. Each piece tells a story of geological history.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-on-primary-container/30 flex items-center justify-center hover:bg-on-primary hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="public">public</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-on-primary-container/30 flex items-center justify-center hover:bg-on-primary hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="favorite">favorite</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-2 gap-12 md:gap-24">
+<div>
+<span class="font-label text-xs uppercase tracking-[0.2em] text-on-primary-container mb-8 block">Shop</span>
+<ul class="space-y-4">
+<li><a class="text-sm hover:text-secondary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-sm hover:text-secondary transition-colors" href="#">Shipping &amp; Returns</a></li>
+</ul>
+</div>
+<div>
+<span class="font-label text-xs uppercase tracking-[0.2em] text-on-primary-container mb-8 block">Support</span>
+<ul class="space-y-4">
+<li><a class="text-sm hover:text-secondary transition-colors" href="#">Contact Us</a></li>
+<li><a class="text-sm hover:text-secondary transition-colors" href="#">Sustainability</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto pt-16 mt-16 border-t border-on-primary-container/10 flex flex-col md:flex-row justify-between gap-8">
+<p class="text-[10px] uppercase tracking-widest text-on-primary-container">© 2024 Bluestone Luxury Chilean Lapis Lazuli. All rights reserved.</p>
+<div class="flex gap-8">
+<span class="text-[10px] uppercase tracking-widest text-on-primary-container">Visa</span>
+<span class="text-[10px] uppercase tracking-widest text-on-primary-container">Mastercard</span>
+<span class="text-[10px] uppercase tracking-widest text-on-primary-container">American Express</span>
+</div>
+</div>
+</footer>
+</body></html>

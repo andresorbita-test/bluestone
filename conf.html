@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Manrope:wght@500;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#f7f9ff",
+              "surface-variant": "#d9e3f1",
+              "surface-container-high": "#dfe9f7",
+              "surface": "#f7f9ff",
+              "tertiary": "#0f1518",
+              "surface-container-highest": "#d9e3f1",
+              "primary-fixed": "#d1e4ff",
+              "on-tertiary": "#ffffff",
+              "secondary": "#325e9e",
+              "on-tertiary-fixed-variant": "#42474c",
+              "on-background": "#121d26",
+              "secondary-container": "#8eb7fd",
+              "error": "#ba1a1a",
+              "surface-container": "#e4effd",
+              "on-secondary-fixed": "#001b3d",
+              "surface-dim": "#d1dbe8",
+              "tertiary-fixed": "#dee3e8",
+              "on-tertiary-fixed": "#171c20",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-surface-variant": "#43474d",
+              "secondary-fixed-dim": "#a9c7ff",
+              "on-primary-fixed-variant": "#304864",
+              "on-primary": "#ffffff",
+              "primary-container": "#0f2a44",
+              "primary": "#00152a",
+              "on-secondary-container": "#124786",
+              "on-primary-fixed": "#001d36",
+              "inverse-primary": "#b0c9ea",
+              "on-secondary-fixed-variant": "#124685",
+              "inverse-on-surface": "#e8f2ff",
+              "inverse-surface": "#27313c",
+              "on-error-container": "#93000a",
+              "surface-tint": "#48607d",
+              "surface-container-low": "#edf4ff",
+              "tertiary-fixed-dim": "#c2c7cc",
+              "on-surface": "#121d26",
+              "outline-variant": "#c3c6ce",
+              "secondary-fixed": "#d6e3ff",
+              "on-error": "#ffffff",
+              "on-primary-container": "#7992b1",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#f7f9ff",
+              "outline": "#74777e",
+              "on-tertiary-container": "#8b9095",
+              "tertiary-container": "#24292d",
+              "primary-fixed-dim": "#b0c9ea"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9ff; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .arctic-gradient {
+            background: linear-gradient(135deg, #325e9e 0%, #0f2a44 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="text-on-background">
+<!-- TopNavBar -->
+<nav class="fixed top-8 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 glass-panel rounded-xl px-8 py-4 flex items-center justify-between">
+<div class="text-primary font-headline font-semibold text-xl tracking-tight">Bluestone</div>
+<div class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-label text-xs uppercase tracking-widest hover:text-secondary transition-colors" href="#">Jewelry</a>
+<a class="text-on-surface-variant font-label text-xs uppercase tracking-widest hover:text-secondary transition-colors" href="#">Collections</a>
+<a class="text-on-surface-variant font-label text-xs uppercase tracking-widest hover:text-secondary transition-colors" href="#">About</a>
+<a class="text-on-surface-variant font-label text-xs uppercase tracking-widest hover:text-secondary transition-colors" href="#">Stores</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="shopping_bag">shopping_bag</span>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="person">person</span>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Celebration & Core Info -->
+<div class="lg:col-span-7 space-y-8">
+<section class="bg-surface-container-low p-10 md:p-16 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-on-secondary-container text-4xl" data-icon="check" style="font-variation-settings: 'FILL' 0, 'wght' 600;">check</span>
+</div>
+<h1 class="text-display-lg text-4xl md:text-5xl font-headline font-semibold text-primary mb-6 tracking-tight leading-tight">
+                            Thank You for Your Purchase!
+                        </h1>
+<p class="text-body-lg text-on-surface-variant max-w-lg leading-relaxed mb-8">
+                            Tu pedido <span class="font-bold text-primary">#BST-8842</span> ha sido recibido y estamos preparando tus joyas con el mayor cuidado artesanal.
+                        </p>
+<div class="flex flex-wrap gap-4">
+<button class="arctic-gradient text-on-primary px-10 py-4 rounded-xl font-label text-sm uppercase tracking-widest hover:scale-105 transition-transform">
+                                Volver a la tienda
+                            </button>
+</div>
+</div>
+<!-- Decorative Background Texture -->
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="Close up texture of deep blue lapis lazuli stone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_eQ5LAJUZ0s_ZSOtgiJ6kcItdnE13JsOAkNBJk8yVbRy71PdRSThop0ybpFo6p2HCruUXsbKmTFqJ2c2P60Uoyc2qwXCszepcCX5C1M72XAmtun0Y7RwbZrV2y1V0VJnLDoC5bQ9Lq1YOuQyFOsZgoWNpvH0tyeZVHdEyEdwtePBmH9HdZQA1IzXWGpi225nzglT9GGRGzu5XLRrj9zAETJEL3Mcn4jIvtT7LDkfTmWAOYhjMuCc3LtuVCVQPCSliOPIJ8RNNjZdk"/>
+</div>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Shipping Details -->
+<section class="bg-surface-container p-8 rounded-xl">
+<h3 class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-6">Shipping Details</h3>
+<div class="space-y-4">
+<div>
+<p class="text-xs text-on-surface-variant font-label uppercase mb-1">Customer</p>
+<p class="text-primary font-medium">Julian Alarcon</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-label uppercase mb-1">Address</p>
+<p class="text-primary font-medium">Av. Vitacura 2670, Depto 1204<br/>Santiago, Chile</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-label uppercase mb-1">Estimated Delivery</p>
+<p class="text-secondary font-bold font-label">Oct 24 - Oct 26, 2024</p>
+</div>
+</div>
+</section>
+<!-- Next Steps -->
+<section class="bg-primary-container p-8 rounded-xl text-on-primary-container">
+<h3 class="font-label text-xs uppercase tracking-[0.2em] text-secondary-container mb-6">Next Steps</h3>
+<ul class="space-y-6">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary-container" data-icon="mail">mail</span>
+<p class="text-sm">Recibirás un correo de confirmación pronto con los detalles del tracking.</p>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary-container" data-icon="diamond">diamond</span>
+<p class="text-sm">Nuestros maestros joyeros realizarán una inspección final de calidad.</p>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary-container" data-icon="local_shipping">local_shipping</span>
+<p class="text-sm">Te notificaremos vía SMS una vez que tu paquete esté en camino.</p>
+</li>
+</ul>
+</section>
+</div>
+</div>
+<!-- Right Column: Order Summary (Bento-style Compact) -->
+<div class="lg:col-span-5 space-y-8">
+<section class="bg-white p-8 rounded-xl shadow-sm border border-outline-variant/10">
+<h3 class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-8">Order Summary</h3>
+<div class="space-y-6 mb-10">
+<!-- Product Item -->
+<div class="flex items-center gap-4">
+<div class="w-24 h-24 rounded-lg bg-surface-container-highest overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Lapis lazuli premium gold bracelet detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP8O7srnE-y-c8o8Q47IYPLUg0PnSNIrGwrv-uyi8x5vzAmuyFH5FwHOefsHQF-G-xmTXlZD26qm1Z7QmYo6VA4BXure_6_A4EmzUcyx2W0RmsUQlGNXwTb7H4bjZO8e54I685-D6MkhA18tW94gFSLzkeJhE4s92FysQ-3DttwEjULQRpF7L9HMTZcJGGa7w3kvxfFOrdmRx5uyroDkhPOhfFvNRp9VrREyHi27hLkMp95Tfeb8jooTqSaJf2wQhl1zJ_AxZBWXDF"/>
+</div>
+<div class="flex-grow">
+<h4 class="text-primary font-semibold text-sm">Lapis Lazuli Premium Bracelet</h4>
+<p class="text-xs text-on-surface-variant font-label">24k Gold Plated • Medium</p>
+<p class="text-data-label font-mono text-sm mt-2 text-secondary">$340.000</p>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/20 pt-6 space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Subtotal</span>
+<span class="font-mono text-primary">$325.000</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Shipping</span>
+<span class="font-mono text-primary">$15.000</span>
+</div>
+<div class="flex justify-between pt-4 mt-2 border-t border-outline-variant/40">
+<span class="font-headline font-semibold text-primary">Total</span>
+<span class="font-mono text-xl font-bold text-primary">$340.000</span>
+</div>
+</div>
+</section>
+<!-- Brand Image / Mood -->
+<div class="rounded-xl overflow-hidden h-64 relative group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Luxury blue jewelry gift box with silk ribbon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKAQ-75o6VF0N28398_EQk5-GcJfRWGIDOK7puTfx4svJKTQpggNol-OHpeAbD79qmkZ4cV137TMviby4RaPPYspclm8MstUztXXphhiu4ZCZCPn1oE8VDarpJTtPmFyzzCMRHXzDM1AdQQvuHypGLEDOfbklcj35ncW5gV3ZTago35mzzVEscNs8S0DouTX7_vJbH3_kfydsqJzIt75w01rAUaGGyjgb4x_p6JTl430PTBcj6AVd0okkGI5yGCgG6dkVL2R_jNSto"/>
+<div class="absolute inset-0 bg-primary-container/20 flex items-end p-8">
+<p class="text-white font-label text-xs uppercase tracking-widest bg-primary/40 backdrop-blur-md px-4 py-2 rounded-full">Artisanal Quality</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low pt-20 pb-10 px-8 border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<div class="space-y-4">
+<div class="text-primary font-headline font-semibold text-xl tracking-tight">Bluestone</div>
+<p class="text-on-surface-variant text-xs font-label">© 2024 Bluestone Luxury. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap gap-8">
+<a class="text-on-surface-variant text-xs font-label hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant text-xs font-label hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant text-xs font-label hover:text-secondary transition-colors" href="#">Shipping &amp; Returns</a>
+<a class="text-on-surface-variant text-xs font-label hover:text-secondary transition-colors" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

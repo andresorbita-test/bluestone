@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Manrope:wght@500&amp;family=JetBrains+Mono&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#c3c6ce",
+              "secondary-fixed": "#d6e3ff",
+              "on-error": "#ffffff",
+              "surface-tint": "#48607d",
+              "surface-container-low": "#edf4ff",
+              "tertiary-fixed-dim": "#c2c7cc",
+              "on-surface": "#121d26",
+              "inverse-surface": "#27313c",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#b0c9ea",
+              "on-secondary-fixed-variant": "#124685",
+              "inverse-on-surface": "#e8f2ff",
+              "primary-fixed-dim": "#b0c9ea",
+              "outline": "#74777e",
+              "on-tertiary-container": "#8b9095",
+              "tertiary-container": "#24292d",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#f7f9ff",
+              "on-primary-container": "#7992b1",
+              "on-background": "#121d26",
+              "secondary-container": "#8eb7fd",
+              "error": "#ba1a1a",
+              "surface-container": "#e4effd",
+              "on-secondary-fixed": "#001b3d",
+              "secondary": "#325e9e",
+              "on-tertiary-fixed-variant": "#42474c",
+              "surface": "#f7f9ff",
+              "tertiary": "#0f1518",
+              "surface-container-highest": "#d9e3f1",
+              "primary-fixed": "#d1e4ff",
+              "on-tertiary": "#ffffff",
+              "background": "#f7f9ff",
+              "surface-variant": "#d9e3f1",
+              "surface-container-high": "#dfe9f7",
+              "primary-container": "#0f2a44",
+              "primary": "#00152a",
+              "on-secondary-container": "#124786",
+              "on-primary-fixed": "#001d36",
+              "secondary-fixed-dim": "#a9c7ff",
+              "on-primary-fixed-variant": "#304864",
+              "on-primary": "#ffffff",
+              "surface-dim": "#d1dbe8",
+              "tertiary-fixed": "#dee3e8",
+              "on-tertiary-fixed": "#171c20",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-surface-variant": "#43474d"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Manrope"],
+              "mono": ["JetBrains Mono"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+        }
+        .premium-gradient {
+            background: linear-gradient(135deg, #325e9e 0%, #0f2a44 100%);
+        }
+        .no-line-transition {
+            background-color: #edf4ff;
+        }
+        .noise-overlay {
+            position: relative;
+        }
+        .noise-overlay::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3%3E");
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Shared TopNavBar -->
+<nav class="fixed top-8 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 glass-nav rounded-xl px-8 py-4 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-12">
+<span class="font-headline font-semibold text-xl tracking-tight text-primary">Bluestone</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Jewelry</a>
+<a class="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Collections</a>
+<a class="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Artisan</a>
+<a class="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">shopping_bag</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">favorite</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">person</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+<!-- Product Hero Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- New Gallery Layout: Large Image + Thumbnails -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="aspect-[4/5] bg-surface-container-highest rounded-[1.5rem] overflow-hidden group shadow-lg">
+<img alt="Pulsera de Lapislázuli Edición Premium" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up of a premium lapis lazuli bracelet on a white marble surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5NUZXHS5yhEt_BkruEVE60rZCmd7Vrmm-xbbiGHY36BxW4JEh2B7klxq23nHH8_qRhhh5Pb0l65xib0ok7CItuQMbvWiX5xPyoRwFv0dN5SvewDNKpLc4ikeOMR4rdpnUaEbAJWxRFqV0mquJRdekSR-JCocad51e7icUI_g6OfAq2vno7Gyjf9uMHIU6wpXMLJJNM0SFB60nEqh_HFizF10HgCMjTO-6adUj5LEHGK3dXjZtJO5gfkksm_QKC556YyviHsu4B4sv"/>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<div class="aspect-square bg-surface-container-highest rounded-[1.5rem] overflow-hidden group shadow-sm ring-2 ring-primary">
+<img alt="Detalle Lapislázuli" class="w-full h-full object-cover cursor-pointer transition-opacity group-hover:opacity-80" data-alt="Macro gemstone texture of deep blue lapis lazuli" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLEsow6d_GicUixpKlPatZtkPd4upznSZleU_GD82h3wHbEVnemBLA7QLXJb2E0EiXxLizD33tx-WhDY2wOpcLlh8sIB3zV5sClAJPv3pRlXK77k-PDb1CHFFs3t7Bu26ldjz3erABuLaTmuhLIBHPPsJkJk-isXTlEr5MidvpH1PWivL1MC1BU62bf30hFjFxtZ0JcBjRBQpel4VfoWp-7-j1yOPCfmk_Eeiyx2hPLxO963DOKyWgbfCwhPx1l__qiUNmzL5BUVsp"/>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-[1.5rem] overflow-hidden group shadow-sm">
+<img alt="Artesanía" class="w-full h-full object-cover cursor-pointer transition-opacity group-hover:opacity-80" data-alt="Artisan hands crafting silver jewelry with precision" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_ZKzXlvATPv21yegufWIIdS9XH2qzRj1VV2cGeXi2XCXhmS24m5wafBVv4a-3zgiY4PhIWgjP2UZ1Jmoexe9h43MMPybir8eygxIrjOZkwoM_Y_pr-B6tgvaNPFguyJHb7X3U4FRxj1fIvJvrwwVUUpYpl9v_kvTfoZfOKynJD2ntdNpuOXjZVIHOX9BHXvrS8LP865mIb175R8S1gvYbK9O3bOOa2Fnomuf1Xc0pFf12C_y2FS3J4NVqLVqCK8GXucrUWepe1TBu"/>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-[1.5rem] overflow-hidden group shadow-sm">
+<img alt="Vista Lateral" class="w-full h-full object-cover cursor-pointer transition-opacity group-hover:opacity-80" data-alt="Side view of the lapis lazuli bracelet showing silver craftsmanship" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO8U11q12zpVikNECXY1dJM__aZdwTRfVVutpccfF6I5TgBGApU97yk83rrc7Ff65hLvwltJga3z5dMG__jXOnsGieBuVFlePAw61_uIEvGbEt5UUed-7RW9U3SUhaQGi6N24Sa7KP1MXFveJ3dhWFFCXaZ2CFNC7IEgkS9PoqtKDAoZMkIppEIZIH0L4JfEEyNXLz0ZXVul5zeP8Z8_pHj5PKMzro8IHgASIRAm0UgwJUxOrLSxhEorISqWX72-qE_ZfVONObIB1j"/>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-[1.5rem] overflow-hidden group shadow-sm">
+<img alt="Lifestyle" class="w-full h-full object-cover cursor-pointer transition-opacity group-hover:opacity-80" data-alt="A person wearing the lapis lazuli bracelet against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgRa2qrvfdsbtFi-bT-xp66eF6YxfQ4oBYSRQcj4wqipn9CXDN7WHHrh8LlJAHdW_ucuGZOrnuakxwLFOkB2e2Ak7GowGwqEEfx9rUclw87qE4hbi-JqDLvuBCgepDesTQCRJXroVfu2gkG3ovhX-QGdkBkUnkzZXbY7eVOqYPVREHuPn8JmD-0kn_mVSvPwlagnevm4wzzrBQZ7XKzCljzcEhn00M2E0u0pIACl3neOtE3wb5zTpy8Nm9t03gH0JSogrpXyoZFtBP"/>
+</div>
+</div>
+</div>
+<!-- Product Details -->
+<div class="lg:col-span-5 lg:sticky lg:top-36 space-y-10">
+<header class="space-y-4">
+<span class="font-label text-xs uppercase tracking-[0.2em] text-secondary">Edición Premium</span>
+<h1 class="font-headline text-5xl font-semibold leading-tight text-primary">Pulsera de Lapislázuli Edición Premium</h1>
+<div class="font-mono text-2xl text-primary">$340.000</div>
+</header>
+<p class="text-on-surface-variant leading-relaxed text-lg">
+                    Una pieza maestra de joyería artesanal que captura la esencia del cielo andino. Cada esfera ha sido tallada para resaltar las inclusiones naturales de pirita, creando un efecto de cielo estrellado.
+                </p>
+<!-- Configuration/Actions -->
+<div class="space-y-6 pt-6">
+<div class="flex flex-col gap-4">
+<button class="premium-gradient text-on-primary py-5 px-8 rounded-full font-label uppercase tracking-widest text-sm transition-all duration-300 hover:scale-[1.03] hover:-translate-y-0.5 flex items-center justify-center gap-2 shadow-md">
+                            Añadir al carrito
+                            <span class="material-symbols-outlined text-sm">shopping_bag</span>
+</button>
+<button class="border border-outline-variant border-opacity-20 text-primary py-5 px-8 rounded-full font-label uppercase tracking-widest text-sm transition-all duration-300 hover:bg-surface-container-low">
+                            Comprar ahora
+                        </button>
+</div>
+</div>
+<!-- Info Accordion-style sections -->
+<div class="space-y-8 pt-8 border-t border-outline-variant border-opacity-10">
+<div class="space-y-3">
+<h3 class="font-label text-xs uppercase tracking-widest text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+                            Envío y Devoluciones
+                        </h3>
+<p class="text-sm text-on-surface-variant">Envío gratuito asegurado a todo Chile. Devoluciones permitidas dentro de los 30 días posteriores a la recepción.</p>
+</div>
+<div class="space-y-3">
+<h3 class="font-label text-xs uppercase tracking-widest text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">clean_hands</span>
+                            Cuidado de la Joya
+                        </h3>
+<p class="text-sm text-on-surface-variant">Limpiar únicamente con un paño suave y seco. Evite el contacto directo con perfumes y químicos.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Materials Detail Section -->
+<section class="mt-32 space-y-12">
+<div class="text-center max-w-3xl mx-auto space-y-4">
+<span class="font-label text-xs uppercase tracking-[0.3em] text-secondary">La Calidad Bluestone</span>
+<h2 class="font-headline text-4xl font-semibold text-primary">Materiales de Origen Ético</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Material Card 1 -->
+<div class="bg-surface-container-low rounded-[1.5rem] p-10 flex flex-col justify-between noise-overlay shadow-sm">
+<div class="space-y-6">
+<div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-white">diamond</span>
+</div>
+<h3 class="font-headline text-2xl font-semibold text-primary">Lapislázuli AAA</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                            Piedras de lapislázuli AAA seleccionadas a mano de las minas chilenas de alta montaña. Solo el 5% de la extracción alcanza esta pureza de color azul profundo sin vetas de calcita.
+                        </p>
+</div>
+<div class="mt-12 aspect-video rounded-xl overflow-hidden shadow-inner">
+<img alt="Lapis Lazuli Raw" class="w-full h-full object-cover" data-alt="High quality deep blue raw lapis lazuli stone with golden pyrite inclusions" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLEsow6d_GicUixpKlPatZtkPd4upznSZleU_GD82h3wHbEVnemBLA7QLXJb2E0EiXxLizD33tx-WhDY2wOpcLlh8sIB3zV5sClAJPv3pRlXK77k-PDb1CHFFs3t7Bu26ldjz3erABuLaTmuhLIBHPPsJkJk-isXTlEr5MidvpH1PWivL1MC1BU62bf30hFjFxtZ0JcBjRBQpel4VfoWp-7-j1yOPCfmk_Eeiyx2hPLxO963DOKyWgbfCwhPx1l__qiUNmzL5BUVsp"/>
+</div>
+</div>
+<!-- Material Card 2 -->
+<div class="bg-surface-container-high rounded-[1.5rem] p-10 flex flex-col justify-between shadow-sm">
+<div class="space-y-6">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</div>
+<h3 class="font-headline text-2xl font-semibold text-primary">Montura de plata fina 950</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                            Superior a la plata esterlina estándar, nuestra plata 950 ofrece un brillo más blanco y duradero, forjada por maestros artesanos para asegurar la durabilidad de cada eslabón.
+                        </p>
+</div>
+<div class="mt-12 aspect-video rounded-xl overflow-hidden shadow-inner">
+<img alt="Plata Fina" class="w-full h-full object-cover" data-alt="Macro shot of fine silver jewelry crafting process with tools" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_ZKzXlvATPv21yegufWIIdS9XH2qzRj1VV2cGeXi2XCXhmS24m5wafBVv4a-3zgiY4PhIWgjP2UZ1Jmoexe9h43MMPybir8eygxIrjOZkwoM_Y_pr-B6tgvaNPFguyJHb7X3U4FRxj1fIvJvrwwVUUpYpl9v_kvTfoZfOKynJD2ntdNpuOXjZVIHOX9BHXvrS8LP865mIb175R8S1gvYbK9O3bOOa2Fnomuf1Xc0pFf12C_y2FS3J4NVqLVqCK8GXucrUWepe1TBu"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specs Section -->
+<section class="mt-32 bg-primary-container text-white rounded-[1.5rem] p-12 lg:p-20 relative overflow-hidden noise-overlay shadow-xl">
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+<div class="space-y-2">
+<div class="font-mono text-sm text-on-primary-container uppercase tracking-widest">Pureza</div>
+<div class="text-4xl font-headline font-semibold">95.0% Plata</div>
+</div>
+<div class="space-y-2">
+<div class="font-mono text-sm text-on-primary-container uppercase tracking-widest">Peso</div>
+<div class="text-4xl font-headline font-semibold">18.4 Carats</div>
+</div>
+<div class="space-y-2">
+<div class="font-mono text-sm text-on-primary-container uppercase tracking-widest">Origen</div>
+<div class="text-4xl font-headline font-semibold">Andes Chilenos</div>
+</div>
+</div>
+</section>
+<!-- Completar la Colección Section -->
+<section class="mt-32 space-y-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-4">
+<span class="font-label text-xs uppercase tracking-[0.3em] text-secondary">Sugerencias</span>
+<h2 class="font-headline text-4xl font-semibold text-primary">Completar la Colección</h2>
+</div>
+<a class="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group" href="#">
+                    Ver toda la colección 
+                    <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Product Card 1: Necklace -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] bg-surface-container-high rounded-2xl overflow-hidden mb-6 relative">
+<img alt="Collar Lapislázuli" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5NUZXHS5yhEt_BkruEVE60rZCmd7Vrmm-xbbiGHY36BxW4JEh2B7klxq23nHH8_qRhhh5Pb0l65xib0ok7CItuQMbvWiX5xPyoRwFv0dN5SvewDNKpLc4ikeOMR4rdpnUaEbAJWxRFqV0mquJRdekSR-JCocad51e7icUI_g6OfAq2vno7Gyjf9uMHIU6wpXMLJJNM0SFB60nEqh_HFizF10HgCMjTO-6adUj5LEHGK3dXjZtJO5gfkksm_QKC556YyviHsu4B4sv"/>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="space-y-2">
+<h3 class="font-headline text-lg font-semibold text-primary group-hover:text-secondary transition-colors">Collar Astral Plata 950</h3>
+<p class="font-mono text-sm text-on-surface-variant">$480.000</p>
+</div>
+</div>
+<!-- Product Card 2: Ring -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] bg-surface-container-high rounded-2xl overflow-hidden mb-6 relative">
+<img alt="Anillo Lapislázuli" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLEsow6d_GicUixpKlPatZtkPd4upznSZleU_GD82h3wHbEVnemBLA7QLXJb2E0EiXxLizD33tx-WhDY2wOpcLlh8sIB3zV5sClAJPv3pRlXK77k-PDb1CHFFs3t7Bu26ldjz3erABuLaTmuhLIBHPPsJkJk-isXTlEr5MidvpH1PWivL1MC1BU62bf30hFjFxtZ0JcBjRBQpel4VfoWp-7-j1yOPCfmk_Eeiyx2hPLxO963DOKyWgbfCwhPx1l__qiUNmzL5BUVsp"/>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="space-y-2">
+<h3 class="font-headline text-lg font-semibold text-primary group-hover:text-secondary transition-colors">Anillo Solitario Celeste</h3>
+<p class="font-mono text-sm text-on-surface-variant">$195.000</p>
+</div>
+</div>
+<!-- Product Card 3: Earrings -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] bg-surface-container-high rounded-2xl overflow-hidden mb-6 relative">
+<img alt="Aros Lapislázuli" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO8U11q12zpVikNECXY1dJM__aZdwTRfVVutpccfF6I5TgBGApU97yk83rrc7Ff65hLvwltJga3z5dMG__jXOnsGieBuVFlePAw61_uIEvGbEt5UUed-7RW9U3SUhaQGi6N24Sa7KP1MXFveJ3dhWFFCXaZ2CFNC7IEgkS9PoqtKDAoZMkIppEIZIH0L4JfEEyNXLz0ZXVul5zeP8Z8_pHj5PKMzro8IHgASIRAm0UgwJUxOrLSxhEorISqWX72-qE_ZfVONObIB1j"/>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="space-y-2">
+<h3 class="font-headline text-lg font-semibold text-primary group-hover:text-secondary transition-colors">Aros Gota de Medianoche</h3>
+<p class="font-mono text-sm text-on-surface-variant">$260.000</p>
+</div>
+</div>
+<!-- Product Card 4: Cufflinks -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] bg-surface-container-high rounded-2xl overflow-hidden mb-6 relative">
+<img alt="Gemelos Lapislázuli" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_ZKzXlvATPv21yegufWIIdS9XH2qzRj1VV2cGeXi2XCXhmS24m5wafBVv4a-3zgiY4PhIWgjP2UZ1Jmoexe9h43MMPybir8eygxIrjOZkwoM_Y_pr-B6tgvaNPFguyJHb7X3U4FRxj1fIvJvrwwVUUpYpl9v_kvTfoZfOKynJD2ntdNpuOXjZVIHOX9BHXvrS8LP865mIb175R8S1gvYbK9O3bOOa2Fnomuf1Xc0pFf12C_y2FS3J4NVqLVqCK8GXucrUWepe1TBu"/>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="space-y-2">
+<h3 class="font-headline text-lg font-semibold text-primary group-hover:text-secondary transition-colors">Gemelos Imperial Chilenos</h3>
+<p class="font-mono text-sm text-on-surface-variant">$310.000</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Experiencias Bluestone Section -->
+<section class="mt-32 space-y-16">
+<div class="flex flex-col items-center text-center space-y-4">
+<span class="font-label text-xs uppercase tracking-[0.3em] text-secondary">Opiniones</span>
+<h2 class="font-headline text-4xl font-semibold text-primary">Experiencias Bluestone</h2>
+<!-- Summary Block -->
+<div class="flex flex-col items-center gap-2 pt-4">
+<div class="flex items-center gap-2">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+<span class="font-headline text-2xl font-semibold text-primary">4.9/5</span>
+</div>
+<span class="text-on-surface-variant text-sm font-label uppercase tracking-widest">Basado en 128 reseñas</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Review 1 -->
+<div class="bg-white p-8 rounded-[1.5rem] shadow-sm flex flex-col gap-6 border border-surface-container">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">"La calidad del lapislázuli es impresionante, se nota el trabajo artesanal en cada detalle. Una pieza que realmente destaca."</p>
+<div class="flex items-center gap-4 mt-auto">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Review Image" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgRa2qrvfdsbtFi-bT-xp66eF6YxfQ4oBYSRQcj4wqipn9CXDN7WHHrh8LlJAHdW_ucuGZOrnuakxwLFOkB2e2Ak7GowGwqEEfx9rUclw87qE4hbi-JqDLvuBCgepDesTQCRJXroVfu2gkG3ovhX-QGdkBkUnkzZXbY7eVOqYPVREHuPn8JmD-0kn_mVSvPwlagnevm4wzzrBQZ7XKzCljzcEhn00M2E0u0pIACl3neOtE3wb5zTpy8Nm9t03gH0JSogrpXyoZFtBP"/>
+</div>
+<div>
+<div class="font-headline font-semibold text-sm text-primary">Valentina R.</div>
+<div class="text-xs text-on-surface-variant">Santiago, Chile</div>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="bg-white p-8 rounded-[1.5rem] shadow-sm flex flex-col gap-6 border border-surface-container">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">"Un regalo perfecto, el empaque y la joya superaron mis expectativas. La presentación es de un nivel de lujo internacional."</p>
+<div class="flex items-center gap-4 mt-auto">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Review Image" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5NUZXHS5yhEt_BkruEVE60rZCmd7Vrmm-xbbiGHY36BxW4JEh2B7klxq23nHH8_qRhhh5Pb0l65xib0ok7CItuQMbvWiX5xPyoRwFv0dN5SvewDNKpLc4ikeOMR4rdpnUaEbAJWxRFqV0mquJRdekSR-JCocad51e7icUI_g6OfAq2vno7Gyjf9uMHIU6wpXMLJJNM0SFB60nEqh_HFizF10HgCMjTO-6adUj5LEHGK3dXjZtJO5gfkksm_QKC556YyviHsu4B4sv"/>
+</div>
+<div>
+<div class="font-headline font-semibold text-sm text-primary">Andrés M.</div>
+<div class="text-xs text-on-surface-variant">Viña del Mar, Chile</div>
+</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="bg-white p-8 rounded-[1.5rem] shadow-sm flex flex-col gap-6 border border-surface-container">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">"El color de la piedra es profundo y vibrante. Me encanta cómo las inclusiones de pirita brillan bajo la luz del sol."</p>
+<div class="flex items-center gap-4 mt-auto">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Review Image" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLEsow6d_GicUixpKlPatZtkPd4upznSZleU_GD82h3wHbEVnemBLA7QLXJb2E0EiXxLizD33tx-WhDY2wOpcLlh8sIB3zV5sClAJPv3pRlXK77k-PDb1CHFFs3t7Bu26ldjz3erABuLaTmuhLIBHPPsJkJk-isXTlEr5MidvpH1PWivL1MC1BU62bf30hFjFxtZ0JcBjRBQpel4VfoWp-7-j1yOPCfmk_Eeiyx2hPLxO963DOKyWgbfCwhPx1l__qiUNmzL5BUVsp"/>
+</div>
+<div>
+<div class="font-headline font-semibold text-sm text-primary">Carolina L.</div>
+<div class="text-xs text-on-surface-variant">La Serena, Chile</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Shared Footer -->
+<footer class="bg-surface-container-low pt-24 pb-12 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+<div class="md:col-span-1">
+<span class="font-headline font-semibold text-xl tracking-tight text-primary">Bluestone</span>
+<p class="mt-6 text-sm text-on-surface-variant leading-relaxed">
+                        Curando la mejor selección de lapislázuli chileno para el coleccionista moderno.
+                    </p>
+</div>
+<div class="md:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-8">
+<div>
+<h4 class="font-label text-xs uppercase tracking-widest text-primary mb-6">Servicio</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Jewelry Care</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label text-xs uppercase tracking-widest text-primary mb-6">Compañía</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Ethical Sourcing</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Boutique Locations</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label text-xs uppercase tracking-widest text-primary mb-6">Ayuda</h4>
+<ul class="space-y-4">
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant border-opacity-10 flex flex-col md:flex-row justify-between items-center gap-6">
+<span class="text-xs text-on-surface-variant">© 2024 Bluestone Chilean Lapis Lazuli. All rights reserved.</span>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">social_leaderboard</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">share</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

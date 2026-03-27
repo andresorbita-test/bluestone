@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#24292d",
+              "on-tertiary-fixed": "#171c20",
+              "primary-fixed-dim": "#b0c9ea",
+              "on-surface-variant": "#43474d",
+              "inverse-surface": "#27313c",
+              "surface-variant": "#d9e3f1",
+              "tertiary": "#0f1518",
+              "surface-container-low": "#edf4ff",
+              "surface-dim": "#d1dbe8",
+              "on-secondary-fixed": "#001b3d",
+              "on-secondary-fixed-variant": "#124685",
+              "on-primary-fixed": "#001d36",
+              "secondary-fixed-dim": "#a9c7ff",
+              "error": "#ba1a1a",
+              "surface-container-highest": "#d9e3f1",
+              "surface-bright": "#f7f9ff",
+              "on-tertiary-container": "#8b9095",
+              "on-tertiary": "#ffffff",
+              "on-primary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-tint": "#48607d",
+              "secondary-fixed": "#d6e3ff",
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#dfe9f7",
+              "inverse-primary": "#b0c9ea",
+              "primary-container": "#0f2a44",
+              "on-surface": "#121d26",
+              "tertiary-fixed": "#dee3e8",
+              "surface": "#f7f9ff",
+              "on-error": "#ffffff",
+              "on-primary-container": "#7992b1",
+              "primary": "#00152a",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed-dim": "#c2c7cc",
+              "on-background": "#121d26",
+              "secondary-container": "#8eb7fd",
+              "on-primary-fixed-variant": "#304864",
+              "inverse-on-surface": "#e8f2ff",
+              "on-secondary-container": "#124786",
+              "primary-fixed": "#d1e4ff",
+              "outline-variant": "#c3c6ce",
+              "background": "#f7f9ff",
+              "outline": "#74777e",
+              "surface-container": "#e4effd",
+              "on-tertiary-fixed-variant": "#42474c",
+              "secondary": "#325e9e"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .arctic-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .gradient-primary {
+            background: linear-gradient(135deg, #325e9e 0%, #0f2a44 100%);
+        }
+        input:focus {
+            outline: none;
+            border-bottom-color: #325e9e !important;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Header / Navigation -->
+<header class="fixed top-8 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50">
+<nav class="arctic-glass rounded-xl px-8 py-4 flex items-center justify-between shadow-sm border border-outline-variant/10">
+<div class="flex items-center gap-8">
+<span class="font-headline font-semibold text-xl tracking-tight text-primary">Bluestone</span>
+<div class="hidden md:flex gap-6">
+<a class="text-sm font-label uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors" href="#">Collections</a>
+<a class="text-sm font-label uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors" href="#">Our Story</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">lock</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">help_outline</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="max-w-7xl mx-auto pt-32 pb-24 px-6 lg:px-12">
+<div class="mb-12">
+<a class="inline-flex items-center gap-2 text-secondary hover:text-primary transition-all group" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span class="font-label text-xs uppercase tracking-widest">Back to Cart</span>
+</a>
+<h1 class="text-4xl font-headline font-semibold mt-4 text-primary tracking-tight">Checkout</h1>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<!-- Left Column: Checkout Flow -->
+<div class="lg:col-span-7 space-y-16">
+<!-- Section 1: Shipping -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary-container text-on-primary-container font-label text-xs">1</span>
+<h2 class="text-xl font-headline font-medium">Shipping Information</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
+<div class="space-y-2">
+<label class="block font-label text-[10px] uppercase tracking-widest text-on-surface-variant ml-1">First Name</label>
+<input class="w-full bg-surface-container-low border-0 border-b border-outline-variant/30 py-3 px-1 focus:ring-0 transition-all placeholder:text-outline/50" placeholder="Julian" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label text-[10px] uppercase tracking-widest text-on-surface-variant ml-1">Last Name</label>
+<input class="w-full bg-surface-container-low border-0 border-b border-outline-variant/30 py-3 px-1 focus:ring-0 transition-all placeholder:text-outline/50" placeholder="Andes" type="text"/>
+</div>
+<div class="md:col-span-2 space-y-2">
+<label class="block font-label text-[10px] uppercase tracking-widest text-on-surface-variant ml-1">Address</label>
+<input class="w-full bg-surface-container-low border-0 border-b border-outline-variant/30 py-3 px-1 focus:ring-0 transition-all placeholder:text-outline/50" placeholder="123 Glacial Trail, High Andes" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label text-[10px] uppercase tracking-widest text-on-surface-variant ml-1">City</label>
+<input class="w-full bg-surface-container-low border-0 border-b border-outline-variant/30 py-3 px-1 focus:ring-0 transition-all placeholder:text-outline/50" placeholder="Santiago" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label text-[10px] uppercase tracking-widest text-on-surface-variant ml-1">Postal Code</label>
+<input class="w-full bg-surface-container-low border-0 border-b border-outline-variant/30 py-3 px-1 focus:ring-0 transition-all placeholder:text-outline/50" placeholder="8320000" type="text"/>
+</div>
+</div>
+</section>
+<!-- Section 2: Delivery -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant font-label text-xs">2</span>
+<h2 class="text-xl font-headline font-medium">Delivery Method</h2>
+</div>
+<div class="space-y-4">
+<label class="relative flex items-center p-6 rounded-lg bg-surface-container-lowest border border-outline-variant/20 cursor-pointer hover:border-secondary transition-all group">
+<input checked="" class="w-4 h-4 text-secondary border-outline focus:ring-secondary" name="shipping" type="radio"/>
+<div class="ml-4 flex-1">
+<p class="font-headline font-medium text-primary">Standard Shipping</p>
+<p class="text-sm text-on-surface-variant">4-7 business days</p>
+</div>
+<span class="font-label text-sm font-medium text-primary">Free</span>
+</label>
+<label class="relative flex items-center p-6 rounded-lg bg-surface-container-lowest border border-outline-variant/20 cursor-pointer hover:border-secondary transition-all group">
+<input class="w-4 h-4 text-secondary border-outline focus:ring-secondary" name="shipping" type="radio"/>
+<div class="ml-4 flex-1">
+<p class="font-headline font-medium text-primary">Express Courier</p>
+<p class="text-sm text-on-surface-variant">1-2 business days</p>
+</div>
+<span class="font-label text-sm font-medium text-primary">$25.00</span>
+</label>
+</div>
+</section>
+<!-- Section 3: Payment -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant font-label text-xs">3</span>
+<h2 class="text-xl font-headline font-medium">Payment</h2>
+</div>
+<div class="bg-surface-container-low rounded-lg p-8 space-y-8">
+<div class="flex gap-4 p-1 bg-surface-container rounded-full w-fit">
+<button class="px-6 py-2 rounded-full bg-surface-container-lowest text-primary text-sm font-medium shadow-sm transition-all">Credit Card</button>
+<button class="px-6 py-2 rounded-full text-on-surface-variant text-sm font-medium hover:text-primary transition-all">PayPal</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
+<div class="md:col-span-2 space-y-2">
+<label class="block font-label text-[10px] uppercase tracking-widest text-on-surface-variant ml-1">Card Number</label>
+<div class="relative">
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/30 py-3 px-1 focus:ring-0 transition-all placeholder:text-outline/50" placeholder="0000 0000 0000 0000" type="text"/>
+<span class="absolute right-2 top-3 material-symbols-outlined text-on-surface-variant opacity-50">credit_card</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block font-label text-[10px] uppercase tracking-widest text-on-surface-variant ml-1">Expiry Date</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/30 py-3 px-1 focus:ring-0 transition-all placeholder:text-outline/50" placeholder="MM / YY" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label text-[10px] uppercase tracking-widest text-on-surface-variant ml-1">CVV</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/30 py-3 px-1 focus:ring-0 transition-all placeholder:text-outline/50" placeholder="***" type="password"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Complete Button -->
+<button class="w-full gradient-primary text-on-primary py-6 rounded-xl font-headline font-medium text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-primary/10">
+                    Complete Purchase
+                </button>
+<!-- Trust Badges -->
+<div class="flex flex-wrap items-center justify-center gap-12 py-8 opacity-60 grayscale hover:grayscale-0 transition-all">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">verified_user</span>
+<span class="font-label text-[10px] uppercase tracking-widest font-semibold">SSL Secure</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">payments</span>
+<span class="font-label text-[10px] uppercase tracking-widest font-semibold">Secure Payment</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+<span class="font-label text-[10px] uppercase tracking-widest font-semibold">Tracked Delivery</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Order Summary (Sticky) -->
+<div class="lg:col-span-5 lg:sticky lg:top-36">
+<div class="bg-surface-container-high/50 rounded-lg p-8 border border-outline-variant/10">
+<h3 class="text-xl font-headline font-medium mb-8">Order Summary</h3>
+<div class="space-y-8 divide-y divide-outline-variant/20">
+<!-- Product 1 -->
+<div class="flex gap-6 pb-6">
+<div class="w-24 h-24 bg-surface-dim rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Lapis Lazuli Premium Bracelet" class="w-full h-full object-cover mix-blend-multiply opacity-90 hover:scale-110 transition-transform duration-500" data-alt="Deep blue lapis lazuli beaded bracelet on a white surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwVHO7OoCrmXAyoLMUgifRVWMOJd1SILN0rAg1oDvx9l5yCbboBbr0bcAmVPwbnFRtG4V9GNx5eEYEwwUssG9nuNt_O7nPhc8dy8Lc6n9G4I4ppvQK2Ds6K4MToOCO4TIm0hFNrplbKIpir0VBpD5PqDlCodVXzeY9vMf1DigntXkq2bKajpEYl7F1jOJ15ga7imdCzyzzNPgq8qBnZCoTKOAjcOFvXYu6oiimHgrF7hBAiLArMEMDcloNAhYbYo5JFm6IX1ZIVPvM"/>
+</div>
+<div class="flex-1 flex flex-col justify-between py-1">
+<div>
+<h4 class="font-headline font-medium text-primary">Lapis Lazuli Premium Bracelet</h4>
+<p class="text-xs text-on-surface-variant mt-1">Hand-polished • 8mm beads</p>
+</div>
+<span class="font-label text-sm font-medium font-['JetBrains_Mono'] text-primary">$285.00</span>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="flex gap-6 pt-8 pb-6">
+<div class="w-24 h-24 bg-surface-dim rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Andean Pendant" class="w-full h-full object-cover mix-blend-multiply opacity-90 hover:scale-110 transition-transform duration-500" data-alt="Polished geometric lapis lazuli stone pendant with silver chain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXZMraVQ4FePeRVN24pmLJwwRWWRozfykGoUhr-JsBy10OJi4Z-wr21pluPvBIqNwr00ZMMHQvywv3OL_lnolBcymeecIajOa3933OMBCvB9LjvOsd0P1OLjreoIITm1Ln-8TokYb-u5UB7AEEWveNLR839yvQtDgw47H_Z838gQsPFpdL-J0Du6vu01sGBAifoVxXV_ijLyr7w_R9ay-JhMOPGEpd2Q_lK5s2mpYxODH-Fod3xOCBQV1asFJmZQ1I0pfRRK54U-Dx"/>
+</div>
+<div class="flex-1 flex flex-col justify-between py-1">
+<div>
+<h4 class="font-headline font-medium text-primary">Andean Pendant</h4>
+<p class="text-xs text-on-surface-variant mt-1">925 Sterling Silver • Deep Blue</p>
+</div>
+<span class="font-label text-sm font-medium font-['JetBrains_Mono'] text-primary">$420.00</span>
+</div>
+</div>
+</div>
+<!-- Totals -->
+<div class="mt-12 pt-8 border-t border-outline-variant space-y-4">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant font-label uppercase tracking-widest">Subtotal</span>
+<span class="font-['JetBrains_Mono'] text-primary">$705.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant font-label uppercase tracking-widest">Shipping</span>
+<span class="font-['JetBrains_Mono'] text-primary">Calculated next</span>
+</div>
+<div class="flex justify-between items-end pt-4">
+<span class="text-lg font-headline font-semibold text-primary">Total</span>
+<div class="text-right">
+<p class="text-2xl font-headline font-semibold text-primary font-['JetBrains_Mono']">$705.00</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Including duties and taxes</p>
+</div>
+</div>
+</div>
+<!-- Discount Code -->
+<div class="mt-12 relative">
+<input class="w-full bg-surface-container-low border border-outline-variant/20 rounded-lg py-3 px-4 pr-24 text-sm focus:ring-0 transition-all" placeholder="Gift card or discount code" type="text"/>
+<button class="absolute right-2 top-2 bottom-2 px-4 rounded-md bg-primary-container text-on-primary-container text-xs font-label uppercase tracking-widest hover:bg-secondary transition-colors">Apply</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low py-12 border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<p class="text-on-surface-variant text-xs font-label">© 2024 Bluestone. Handcrafted Chilean Lapis Lazuli.</p>
+<div class="flex gap-8">
+<a class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant hover:text-secondary" href="#">Privacy Policy</a>
+<a class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant hover:text-secondary" href="#">Terms of Service</a>
+<a class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant hover:text-secondary" href="#">Shipping &amp; Returns</a>
+<a class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant hover:text-secondary" href="#">Trust Badges</a>
+</div>
+</div>
+</footer>
+</body></html>

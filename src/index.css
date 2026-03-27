@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Manrope:wght@500;700&family=JetBrains+Mono&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00152a;
+  --color-primary-container: #0f2a44;
+  --color-on-primary-container: #7992b1;
+  --color-secondary: #325e9e;
+  --color-secondary-container: #8eb7fd;
+  --color-on-secondary-container: #124786;
+  --color-surface: #f7f9ff;
+  --color-on-surface: #121d26;
+  --color-on-surface-variant: #43474d;
+  --color-surface-container: #e4effd;
+  --color-surface-container-highest: #d9e3f1;
+  --color-surface-container-low: #edf4ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-dim: #d1dbe8;
+  --color-error: #ba1a1a;
+  --color-outline: #74777e;
+  --color-outline-variant: #c3c6ce;
+
+  --font-headline: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-label: 'Manrope', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body { 
+  font-family: 'Inter', sans-serif; 
+  background-color: #f7f9ff; 
+  color: #121d26;
+}
+
+.material-symbols-outlined { 
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; 
+}
+
+.bg-noise {
+  position: relative;
+}
+.bg-noise::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0.05;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3BaseFilter id='filter'%3BfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23filter)'/%3E%3C/svg%3E");
+}
+
+.arctic-gradient {
+  background: linear-gradient(135deg, #325e9e 0%, #0f2a44 100%);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+}
